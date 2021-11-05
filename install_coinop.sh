@@ -3,11 +3,11 @@
 ZP="coinop.zip"
 
 cd /media/fat/scripts
-rm -r coinop >/dev/null
-rm $ZP >/dev/null
+rm -r coinop 2> /dev/null
+rm $ZP  2> /dev/null
 
-curl https://raw.githubusercontent.com/funkycochise/Coin-Op/master/$ZP -O -k
-unzip $ZP -d /media/fat/scripts/
+curl -s https://raw.githubusercontent.com/funkycochise/Coin-Op/master/$ZP -O -k
+unzip -qq $ZP -d /media/fat/scripts/ 
 
 rm $ZP
 
