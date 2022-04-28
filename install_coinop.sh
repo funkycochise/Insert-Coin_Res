@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ZP="coinop.zip"
-
+clear
+                              
 cd /media/fat/scripts
 rm -r coinop 2> /dev/null
 rm $ZP  2> /dev/null
@@ -12,4 +13,4 @@ unzip -qq $ZP -d /media/fat/scripts/
 rm $ZP
 
 cd /media/fat/scripts/coinop
-sh ./_run.sh 
+sh ./_run.sh
