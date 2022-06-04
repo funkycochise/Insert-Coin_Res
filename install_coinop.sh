@@ -1,8 +1,11 @@
 #!/bin/bash
 
-ZP="coinop.zip"
 clear
-                              
+launchdir=$(pwd)
+#echo "launchdir : $launchdir"
+
+ZP="coinop.zip"
+
 cd /media/fat/scripts
 rm -r coinop 2> /dev/null
 rm $ZP  2> /dev/null
@@ -12,5 +15,6 @@ unzip -qq $ZP -d /media/fat/scripts/
 
 rm $ZP
 
+#echo "launchdir : $launchdir"
 cd /media/fat/scripts/coinop
-sh ./_run.sh
+sh ./_run.sh $launchdir
