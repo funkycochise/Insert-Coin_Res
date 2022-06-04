@@ -94,7 +94,6 @@ for file in /media/fat/_Unstable/*.rbf; do
     mv "$file" "/media/fat/_Unstable/$horo"
     cp "/media/fat/_Unstable/$horo" /media/fat/_Console
 done
-special_echo "PSX"
 rm -r /media/fat/_Unstable
 
 special_echo () {
@@ -108,6 +107,7 @@ cd $TEMP
 curl $saturn -O -k
 rm -r /media/fat/_Console/Saturn*.rbf >/dev/null
 mv $TEMP/Saturn*.rbf $CONSOLE
+special_echo "PSX"
 special_echo "Saturn"
 curl $sgb -O -k
 unzip $TEMP/SGB.zip
