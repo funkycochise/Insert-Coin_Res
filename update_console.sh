@@ -1,21 +1,7 @@
 #!/bin/sh
 version=0.09
 #
-#  MiSTer-unstable-nightlies Updater (c) 2021 by Akuma GPLv2
-#
-#  20220207 update: added main update notice
-#  20220207 update: removed one-time main update
-#  20220130 update: added github commit check
-#  20211222 update: changed update exit code to 99, removed white lines
-#  20211221 update: added auto-rename if old PlayStation games folder is found
-#  20211221 update: added one-time run for unstable-update_main-nightlies.sh
-#  20211221 update: added exit to urlcat as extra safety measure
-#  20211219 update: fixed upstream rename of PlayStation core to PSX
-#  20211219 update: added self-update
-#  20211219 update: moved maxkeep=N into self.ini
-#  20211218 update: added maxkeep=N, keep max N nightlies
-#  20211213 update: using new source, json file from @theypsilon
-#  20211212 update: corrected bios download directory
+#  THis script is based on MiSTer-unstable-nightlies Updater (c) 2021 by Akuma GPLv2
 #
 corename="PSX"
 oldcorename="PlayStation"
