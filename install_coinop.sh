@@ -21,7 +21,6 @@ sh ./_run.sh $launchdir
 
 #special_echo "looking into $launchdir"
 if test -f "$launchdir/update_main_mister.sh"; then
-   special_echo "Updating main mister"
    sh $launchdir/update_main_mister.sh >/dev/null
 fi
 
