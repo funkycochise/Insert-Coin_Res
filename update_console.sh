@@ -1,7 +1,21 @@
 #!/bin/sh
 version=0.09
 #
-#  THis script is based on MiSTer-unstable-nightlies Updater (c) 2021 by Akuma GPLv2
+#  MiSTer-unstable-nightlies Updater (c) 2021 by Akuma GPLv2
+#
+#  20220207 update: added main update notice
+#  20220207 update: removed one-time main update
+#  20220130 update: added github commit check
+#  20211222 update: changed update exit code to 99, removed white lines
+#  20211221 update: added auto-rename if old PlayStation games folder is found
+#  20211221 update: added one-time run for unstable-update_main-nightlies.sh
+#  20211221 update: added exit to urlcat as extra safety measure
+#  20211219 update: fixed upstream rename of PlayStation core to PSX
+#  20211219 update: added self-update
+#  20211219 update: moved maxkeep=N into self.ini
+#  20211218 update: added maxkeep=N, keep max N nightlies
+#  20211213 update: using new source, json file from @theypsilon
+#  20211212 update: corrected bios download directory
 #
 corename="PSX"
 oldcorename="PlayStation"
@@ -80,6 +94,7 @@ for file in /media/fat/_Unstable/*.rbf; do
     mv "$file" "/media/fat/_Unstable/$horo"
     cp "/media/fat/_Unstable/$horo" /media/fat/_Console
 done
+special_echo "PSX"
 rm -r /media/fat/_Unstable
 
 special_echo () {
@@ -90,12 +105,10 @@ exec &>/dev/null
 rm -r $TEMP
 mkdir $TEMP
 cd $TEMP
-#echo "Saturn"
 curl $saturn -O -k
 rm -r /media/fat/_Console/Saturn*.rbf >/dev/null
 mv $TEMP/Saturn*.rbf $CONSOLE
 special_echo "Saturn"
-#echo "SGB"
 curl $sgb -O -k
 unzip $TEMP/SGB.zip
 rm -r /media/fat/_Console/SGB*.rbf >/dev/null
