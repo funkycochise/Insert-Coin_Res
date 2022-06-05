@@ -1,30 +1,15 @@
 #!/bin/sh
 version=0.09
 #
-#  MiSTer-unstable-nightlies Updater (c) 2021 by Akuma GPLv2
-#
-#  20220207 update: added main update notice
-#  20220207 update: removed one-time main update
-#  20220130 update: added github commit check
-#  20211222 update: changed update exit code to 99, removed white lines
-#  20211221 update: added auto-rename if old PlayStation games folder is found
-#  20211221 update: added one-time run for unstable-update_main-nightlies.sh
-#  20211221 update: added exit to urlcat as extra safety measure
-#  20211219 update: fixed upstream rename of PlayStation core to PSX
-#  20211219 update: added self-update
-#  20211219 update: moved maxkeep=N into self.ini
-#  20211218 update: added maxkeep=N, keep max N nightlies
-#  20211213 update: using new source, json file from @theypsilon
-#  20211212 update: corrected bios download directory
+#  Based on MiSTer-unstable-nightlies Updater (c) 2021 by Akuma GPLv2
 #
 corename="PSX"
 oldcorename="PlayStation"
+coinop_temp="_coinop_temp"
 
-TEMP=/media/fat/scripts/temp
 CONSOLE=/media/fat/_Console/
 saturn=https://cdn.discordapp.com/attachments/859157312531071016/978435271257362522/Saturn.rbf
 sgb=https://cdn.discordapp.com/attachments/859157312531071016/978714042237616168/SGB.zip
-
 
 self="$(readlink -f "$0")"
 
@@ -59,7 +44,7 @@ selfurl_version="$(urlcat "$selfurl"|sed -n 's,^version=,,;2p')"
   mv "$tempfile" "$self";chmod +x "$self";exec "$self"; exit 99
 }
 
-coredir="/media/fat/_Unstable";makedir "$coredir"
+coredir="/media/fat/$coinop_temp";makedir "$coredir"
 gamesdir="/media/fat/games"
 psxdir="$gamesdir/${corename}";makedir "$psxdir"
 
@@ -83,38 +68,35 @@ corefile="$coredir/${url##*/}"
   find "/media/fat" -maxdepth 2 -type d -name "$oldcorename" -exec rename -v $oldcorename $corename {} \;
 }
 
-rm -r /media/fat/_Console/PSX*.rbf
-for file in /media/fat/_Unstable/*.rbf; do 
+rm -r /media/fat/_Console/PSX*.rbf >/dev/null
+for file in /media/fat/$coinop_temp/*.rbf; do 
     horo="${file%.*}"
-    horo="${file:34:8}"
-    horo="PSX_$horo.rbf"
+    horo="${file:37:8}"
     #echo "file : $file"
     #echo "horo : $horo"
-    #echo "mv : /media/fat/_Unstable/$horo"
-    mv "$file" "/media/fat/_Unstable/$horo"
-    cp "/media/fat/_Unstable/$horo" /media/fat/_Console
+    horo="PSX_$horo.rbf"
+    #echo "mv : /media/fat/$coinop_temp/$horo"
+    mv "$file" "/media/fat/$coinop_temp/$horo"
+    cp "/media/fat/$coinop_temp/$horo" /media/fat/_Console
 done
-rm -r /media/fat/_Unstable
 
 special_echo () {
     echo "$@" >&3
 }
 exec &>/dev/null
 
-rm -r $TEMP
-mkdir $TEMP
-cd $TEMP
+
+cd "/media/fat/$coinop_temp"
 curl $saturn -O -k
 rm -r /media/fat/_Console/Saturn*.rbf >/dev/null
-mv $TEMP/Saturn*.rbf $CONSOLE
+cp /media/fat/$coinop_temp/Saturn*.rbf $CONSOLE
 special_echo "PSX"
 special_echo "Saturn"
 curl $sgb -O -k
-unzip $TEMP/SGB.zip
+unzip /media/fat/$coinop_temp/SGB.zip
 rm -r /media/fat/_Console/SGB*.rbf >/dev/null
-cp $TEMP/SGB*.rbf $CONSOLE
+cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
 special_echo "SGB"
-
-rm -r $TEMP/
+rm -r /media/fat/$coinop_temp
 
 exit 0
