@@ -11,4 +11,13 @@ rm /media/fat/Mister
 
 #echo "Downloading latest main mister."
 curl https://raw.githubusercontent.com/funkycochise/Main_MiSTer/master/releases/$MF -O -k
-rm /media/fat/Mister_
+if test -f "/media/fat/Mister"; then
+   echo "main Mister updated."
+   rm /media/fat/Mister_
+else
+   echo "Something went wrong while trying to download main Mister."
+   echo "Previous main Mister is restored."
+   cp /media/fat/Mister_ /media/fat/Mister
+   rm /media/fat/Mister_
+fi
+
