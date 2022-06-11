@@ -20,4 +20,5 @@ else
    cp /media/fat/Mister_ /media/fat/Mister
    rm /media/fat/Mister_
 fi
+reboot
 
