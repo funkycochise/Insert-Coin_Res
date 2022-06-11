@@ -8,7 +8,8 @@ oldcorename="PlayStation"
 coinop_temp="_coinop_temp"
 
 CONSOLE=/media/fat/_Console/
-saturn=https://cdn.discordapp.com/attachments/859157312531071016/978435271257362522/Saturn.rbf
+#saturn=https://cdn.discordapp.com/attachments/859157312531071016/978435271257362522/Saturn.rbf
+saturn=https://cdn.discordapp.com/attachments/977961301886242897/983410566913728522/Saturn_20220606.rbf
 sgb=https://cdn.discordapp.com/attachments/859157312531071016/978714042237616168/SGB.zip
 
 self="$(readlink -f "$0")"
