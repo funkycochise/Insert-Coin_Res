@@ -8,8 +8,10 @@ oldcorename="PlayStation"
 coinop_temp="_coinop_temp"
 
 CONSOLE=/media/fat/_Console/
-saturn=https://cdn.discordapp.com/attachments/977961301886242897/983410566913728522/Saturn_20220606.rbf
+#saturn=https://cdn.discordapp.com/attachments/977961301886242897/983410566913728522/Saturn_20220606.rbf
+saturn=https://cdn.discordapp.com/attachments/977961301886242897/987031318355402882/Saturn_20220616.rbf
 sgb=https://cdn.discordapp.com/attachments/859157312531071016/978714042237616168/SGB.zip
+s32x=https://github.com/funkycochise/Coin-Op/blob/main/S32X.zip
 
 self="$(readlink -f "$0")"
 
@@ -98,5 +100,10 @@ rm -r /media/fat/_Console/SGB*.rbf >/dev/null
 cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
 special_echo "SGB"
 rm -r /media/fat/$coinop_temp
+special_echo "S32X"
+curl $s32x -O -k
+unzip /media/fat/$coinop_temp/S32X.zip
+rm -r /media/fat/_Console/S32X*.rbf >/dev/null
+cp /media/fat/$coinop_temp/S32X*.rbf $CONSOLE
 
 exit 0
