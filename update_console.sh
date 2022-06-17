@@ -31,7 +31,7 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    special_echo "SGB"
    rm -r /media/fat/_Console/SGB*.rbf >/dev/null
    cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
-   rm -r /media/fat/$coinop_temp
+   #rm -r /media/fat/$coinop_temp
 fi
 
 exit 0
