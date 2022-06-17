@@ -16,7 +16,7 @@ saturn=https://cdn.discordapp.com/attachments/977961301886242897/983410566913728
 sgb=https://cdn.discordapp.com/attachments/859157312531071016/978714042237616168/SGB.zip
 
 
-special_echo "Updating Console cores"
+special_echo "Updating Console cores..."
 mkdir "/media/fat/$coinop_temp"
 cd "/media/fat/$coinop_temp"
 curl https://raw.githubusercontent.com/funkycochise/Coin-Op/main/console.zip -O -k >/dev/null
