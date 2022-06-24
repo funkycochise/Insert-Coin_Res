@@ -17,5 +17,8 @@ Installation :
 1. Run update_all script with alternatives option activated for both regular and JT repository.
 This should create you the /_Arcade/alternatives folder
 
-2. copy install_coinop.sh into /media/fat/Scripts and run it from OSD or ssh
+2. unzip complete_scripts.7z install_coinop.sh into /media/fat/Scripts and run install_coinop.sh from OSD or ssh
 3. if you want to update additionnal Console cores, just put update_console.sh in same directory as install_coinop.sh
+
+update_console.sh will update/Intall Saturn, PSX, SGB console cores
+update_main_mister.sh will install custom Mister to remove progress bar when loading roms
