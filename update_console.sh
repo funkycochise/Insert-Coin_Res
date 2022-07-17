@@ -12,9 +12,6 @@ coinop_temp="_coinop_temp"
 CONSOLE=/media/fat/_Console/
 console_url=https://raw.githubusercontent.com/funkycochise/Coin-Op/main/
 console_zip=console.zip
-saturn=https://cdn.discordapp.com/attachments/977961301886242897/983410566913728522/Saturn_20220606.rbf
-sgb=https://cdn.discordapp.com/attachments/859157312531071016/978714042237616168/SGB.zip
-
 
 special_echo "Updating Console cores..."
 mkdir "/media/fat/$coinop_temp"
@@ -33,7 +30,6 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    rm -r /media/fat/_Console/S32X*.rbf >/dev/null
    cp /media/fat/$coinop_temp/S32X*.rbf $CONSOLE
    special_echo "SGB"
-   rm -r /media/fat/_Console/SGB*.rbf >/dev/null
-   cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
+   rm -r /media/fat/_Console/SGB_20220622.rbf >/dev/null
    rm -r /media/fat/$coinop_temp
 fi
