@@ -20,9 +20,9 @@ curl https://raw.githubusercontent.com/funkycochise/Coin-Op/main/console.zip -O 
 if test -f "/media/fat/$coinop_temp/console.zip"; then
    unzip $console_zip >/dev/null
    rm -r $console_zip >/dev/null
-   special_echo "PSX"
-   rm -r /media/fat/_Console/PSX*.rbf >/dev/null
-   cp /media/fat/$coinop_temp/PSX*.rbf $CONSOLE
+   #special_echo "PSX"
+   #rm -r /media/fat/_Console/PSX*.rbf >/dev/null
+   #cp /media/fat/$coinop_temp/PSX*.rbf $CONSOLE
    special_echo "Saturn"
    rm -r /media/fat/_Console/Saturn*.rbf >/dev/null
    cp /media/fat/$coinop_temp/Saturn*.rbf $CONSOLE
@@ -30,6 +30,6 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    rm -r /media/fat/_Console/S32X*.rbf >/dev/null
    cp /media/fat/$coinop_temp/S32X*.rbf $CONSOLE
    special_echo "SGB"
-   rm -r /media/fat/_Console/SGB_20220622.rbf >/dev/null
+   rm -r /media/fat/_Console/SGB*.rbf >/dev/null
    rm -r /media/fat/$coinop_temp
 fi
