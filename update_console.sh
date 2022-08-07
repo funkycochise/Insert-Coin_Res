@@ -21,8 +21,8 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    unzip $console_zip >/dev/null
    rm -r $console_zip >/dev/null
    #special_echo "PSX"
-   #rm -r /media/fat/_Console/PSX*.rbf >/dev/null
-   #cp /media/fat/$coinop_temp/PSX*.rbf $CONSOLE
+   rm -r /media/fat/_Console/PSX*.rbf >/dev/null
+   cp /media/fat/$coinop_temp/PSX*.rbf $CONSOLE
    special_echo "Saturn"
    rm -r /media/fat/_Console/Saturn*.rbf >/dev/null
    cp /media/fat/$coinop_temp/Saturn*.rbf $CONSOLE
