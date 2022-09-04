@@ -30,7 +30,9 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    special_echo "SGB"
    rm -r /media/fat/_Console/SGB*.rbf >/dev/null
    cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
-   #special_echo "Casio PV-1000"
    rm -r /media/fat/_Console/Casio_PV-1000_20220804.rbf >/dev/null
+   special_echo "SNES"
+   rm -r /media/fat/_Console/SNES*.rbf >/dev/null
+   cp /media/fat/$coinop_temp/SNES*.rbf $CONSOLE
    rm -r /media/fat/$coinop_temp
 fi
