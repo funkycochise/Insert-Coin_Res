@@ -19,12 +19,10 @@ rm $ZP
 cd /media/fat/scripts/coinop
 sh ./_run.sh $launchdir
 
-if test -f "$launchdir/neogeo.zip"; then
-   echo "neogeo.zip"
-   cp $launchdir/neogeo.zip /media/fat/games/mame
-fi
+rm -r /media/fat/Scripts/coinop >/dev/null
 
 if test -f "$launchdir/update_main_mister.sh"; then
    sh $launchdir/update_main_mister.sh >/dev/null
 fi
+
 
