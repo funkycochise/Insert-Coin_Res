@@ -19,10 +19,12 @@ rm $ZP
 cd /media/fat/scripts/coinop
 sh ./_run.sh $launchdir
 
+echo "removing coinop dir"
 rm -r /media/fat/Scripts/coinop >/dev/null
+echo "done $launchdir"
 
 if test -f "$launchdir/update_main_mister.sh"; then
-   sh $launchdir/update_main_mister.sh >/dev/null
+   $launchdir/update_main_mister.sh >/dev/null
 fi
 
 
