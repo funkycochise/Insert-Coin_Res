@@ -32,4 +32,7 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
    rm -r /media/fat/_Console/Casio_PV-1000_20220804.rbf >/dev/null
    rm -r /media/fat/$coinop_temp
+   if test -f "/media/fat/_Console/SMS_20220811.rbf"; then
+      rm -r /media/fat/_Console/SMS_20220620.rbf
+   fi
 fi
