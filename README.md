@@ -1,2 +1,2 @@
-# Insert-coin script for Mister FPGA
+# Insert-Coin script for Mister FPGA
 
