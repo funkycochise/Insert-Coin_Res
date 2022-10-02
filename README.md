@@ -8,6 +8,6 @@ It will also replace Main Mister with a version removing the rom loading progres
 To use it download complete_scripts.7z and run insertcoin.sh script.
 To update the menu, just run this script again.
 
-THe script relies on update_all script 
+The script relies on update_all script 
 https://github.com/theypsilon/Update_All_MiSTer
 activate Main, JTCORES, unofficial and Misc/coin-op collection"
