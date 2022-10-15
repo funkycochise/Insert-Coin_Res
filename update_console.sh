@@ -35,4 +35,8 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    if test -f "/media/fat/_Console/SMS_20220811.rbf"; then
       rm -r /media/fat/_Console/SMS_20220620.rbf
    fi
+   #clean SMS core
+   if  test -f "/media/fat/_Console/SMS_20221014.rbf"; then
+      rm -r /media/fat/_Console/SMS_20220811.rbf
+   fi
 fi
