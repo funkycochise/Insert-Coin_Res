@@ -7,6 +7,7 @@ special_echo () {
 exec &>/dev/null
 
 coinop_temp="_coinop_temp"
+ARCADE=/media/fat/_Arcade/cores
 CONSOLE=/media/fat/_Console/
 console_url=https://raw.githubusercontent.com/funkycochise/Coin-Op/main/
 console_zip=console.zip
@@ -30,6 +31,10 @@ if test -f "/media/fat/$coinop_temp/console.zip"; then
    special_echo "SGB"
    rm -r /media/fat/_Console/SGB*.rbf >/dev/null
    cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
+   special_echo "SMS"
+   rm -r $ARCADE/SMS*.rbf >/dev/null
+   cp /media/fat/$coinop_temp/SMS*.rbf $ARCADE
+   rm -r /media/fat/_Console/Casio_PV-1000_20220804.rbf >/dev/null
    rm -r /media/fat/_Console/Casio_PV-1000_20220804.rbf >/dev/null
    rm -r /media/fat/$coinop_temp
    if test -f "/media/fat/_Console/SMS_20220811.rbf"; then
