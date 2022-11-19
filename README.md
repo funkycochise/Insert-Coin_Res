@@ -20,10 +20,6 @@
 | [**Toaplan V2**](https://github.com/atrac17/Toaplan2) | [**Tatsujin Ō**](https://en.wikipedia.org/wiki/Truxton_II)<br><br>[**Otenki Paradise: Snow Bros. 2**](https://en.wikipedia.org/wiki/Snow_Bros._2:_With_New_Elves) | **In-Development** | [**atrac17**](https://github.com/atrac17) |
 | [**Alpha Denshi M68000**](https://github.com/va7deo/alpha68k) | [**Gang Wars**](https://en.wikipedia.org/wiki/Gang_Wars_(video_game))<br><br>[**Super Champion Baseball**](https://snk.fandom.com/wiki/Super_Champion_Baseball)<br><br>[**Sky Adventure**](https://snk.fandom.com/wiki/Sky_Adventure) | **In-Development** | [**Darren Olafson**](https://twitter.com/Darren__O) |
 
-# Support
+# Insert-Coin script for Mister FPGA
 
-Please consider showing support for this and future projects via [**Darren's Ko-fi**](https://ko-fi.com/darreno) and [**atrac17's Patreon**](https://www.patreon.com/atrac17). While it isn't necessary, it's greatly appreciated.
-
-# Licensing
-
-Contact the author for special licensing needs. Otherwise follow the GPLv2 license attached.
+for more details: https://github.com/funkycochise/Insert-Coin/wiki
