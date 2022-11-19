@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-<img width="700" height="200" src="https://github.com/funkycochise/Insert-Coin/blob/3b665066da8fc7fb44b08c4219fd2bf5c1ae4235/insertcoin_logo.png">
+<img width="700" height="200" src="https://github.com/funkycochise/Insert-Coin/blob/9a540d8c7260be335636c4cb125ba85c453aa398/insertcoin_logo.png">
 </p>
 
 # Insert-Coin script for Mister FPGA
