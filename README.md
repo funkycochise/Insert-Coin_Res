@@ -1,5 +1,5 @@
 <br>
-<p align="center">
+<p align="left">
 <img width="700" height="200" src="https://github.com/funkycochise/Insert-Coin/blob/9a540d8c7260be335636c4cb125ba85c453aa398/insertcoin_logo.png">
 </p>
 
