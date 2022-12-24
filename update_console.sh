@@ -1,42 +1,50 @@
-﻿#!/bin/bash
-clear
-#exec 3>&1
+# redirect stdout/stderr to a file
+#exec >run.txt 2>&1
+
+exec 3>&1
 special_echo () {
     echo "$@" >&3
 }
 exec &>/dev/null
 
-coinop_temp="_coinop_temp"
-CONSOLE=/media/fat/_Console/
-console_url=https://raw.githubusercontent.com/funkycochise/Coin-Op/main/
-console_zip=console.zip
+launchdir=$1
+#special_echo "launchdir $launchdir"
 
-special_echo "Updating Console cores..."
-mkdir "/media/fat/$coinop_temp"
-cd "/media/fat/$coinop_temp"
-curl https://raw.githubusercontent.com/funkycochise/Coin-Op/main/console.zip -O -k >/dev/null
-if test -f "/media/fat/$coinop_temp/console.zip"; then
-   unzip $console_zip >/dev/null
-   rm -r $console_zip >/dev/null
+special_echo "Getting latest console cores"
+
+CONSOLE=/media/fat/_Console/
+
+wget https://raw.githubusercontent.com/funkycochise/Insert-Coin_Res/main/console.zip
+if test -f "./console.zip"; then
+   unzip console.zip >/dev/null
+   rm -r ./console.zip >/dev/null
    special_echo "PSX"
-   rm -r /media/fat/_Console/PSX*.rbf >/dev/null
-   cp /media/fat/$coinop_temp/PSX*.rbf $CONSOLE
+   rm -r $CONSOLE/PSX*.rbf >/dev/null
+   mv ./PSX*.rbf $CONSOLE
+   touch $CONSOLE/PSX*.rbf >/dev/null
    special_echo "Saturn"
-   rm -r /media/fat/_Console/Saturn*.rbf >/dev/null
-   cp /media/fat/$coinop_temp/Saturn*.rbf $CONSOLE
+   rm -r $CONSOLE/Saturn*.rbf >/dev/null
+   mv ./Saturn*.rbf $CONSOLE
+   touch $CONSOLE/Saturn*.rbf >/dev/null
    special_echo "S32X"
-   rm -r /media/fat/_Console/S32X*.rbf >/dev/null
-   cp /media/fat/$coinop_temp/S32X*.rbf $CONSOLE
+   rm -r $CONSOLE/S32X*.rbf >/dev/null
+   mv ./S32X*.rbf $CONSOLE
+   touch $CONSOLE/S32X*.rbf >/dev/null
    special_echo "SGB"
-   rm -r /media/fat/_Console/SGB*.rbf >/dev/null
-   cp /media/fat/$coinop_temp/SGB*.rbf $CONSOLE
-   rm -r /media/fat/_Console/Casio_PV-1000_20220804.rbf >/dev/null
-   rm -r /media/fat/$coinop_temp
-   #clean SMS core
-   if test -f "/media/fat/_Console/SMS_20220811.rbf"; then
-      rm -r /media/fat/_Console/SMS_20220620.rbf
-   fi
-   if  test -f "/media/fat/_Console/SMS_20221014.rbf"; then
-      rm -r /media/fat/_Console/SMS_20220811.rbf
-   fi
+   rm -r $CONSOLE/SGB*.rbf >/dev/null
+   mv ./SGB*.rbf $CONSOLE
+   touch $CONSOLE/SGB*.rbf >/dev/null
 fi
+
+#clean obsolete core
+if test -f "/media/fat/_Console/Casio_PV-1000_20220804.rbf"; then
+   rm -r /media/fat/_Console/Casio_PV-1000_20220804.rbf >/dev/null
+fi
+if test -f "/media/fat/_Console/SMS_20220811.rbf"; then
+rm -r /media/fat/_Console/SMS_20220620.rbf
+fi
+if  test -f "/media/fat/_Console/SMS_20221014.rbf"; then
+rm -r /media/fat/_Console/SMS_20220811.rbf
+fi
+
+special_echo "Completed."
