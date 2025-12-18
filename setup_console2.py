@@ -113,7 +113,7 @@ KEY_TOOLTIPS = {
         "console_mgl": "Removes additional console mgl",
         "obsolete_core": "Removes deprecated cores",
         "remove_other": "Removes other folder",
-        "Exit": "Back to main menu "
+        "Exit": "Back to main menu"
     },    
     "folder": {
         "console_mgl": "Removes additional console mgl",
@@ -134,7 +134,7 @@ KEY_TOOLTIPS = {
         "vsf": "Creates versus Fighting Games menu",
         "rng_h": "Creates Horizontal Run'n'Gun Games menu ",
         "rng_v": "Creates Vertical Run'n'Gun Games menu",        
-        "Exit": "Back to main menu "
+        "Exit": "Back to main menu"
     }
 }
 
@@ -198,11 +198,11 @@ def main(stdscr):
 
     while True:
         stdscr.clear()
-        stdscr.addstr(0, 0, "↑/↓ naviguer, Entrée/Espace toggle/cycle dualsdram, Échap pour quitter", curses.color_pair(1))
+        stdscr.addstr(0, 0, "↑/↓ to browse, Enter/Space to toggle, Escape to exit", curses.color_pair(1))
 
         # --- Affichage menu ---
         if mode == "section":
-            stdscr.addstr(2, 0, "Sélectionne une section :", curses.color_pair(1))
+            stdscr.addstr(2, 0, "Select :", curses.color_pair(1))
             for i, sec in enumerate(main_menu):
                 if i == current_section:
                     stdscr.addstr(3 + i, 0, "> " + sec, curses.color_pair(1) | curses.A_REVERSE)
@@ -212,7 +212,7 @@ def main(stdscr):
             sec = main_menu[current_section]
             if sec in config:
                 keys = list(config[sec].keys())
-                stdscr.addstr(2, 0, f"Sélectionne une clé dans [{sec}] :", curses.color_pair(1))
+                stdscr.addstr(2, 0, f"Select option in [{sec}] :", curses.color_pair(1))
                 for i, k in enumerate(keys):
                     val = config[sec][k]
                     if k == "dualsdram":
@@ -242,7 +242,7 @@ def main(stdscr):
             if current_key < len(keys):
                 tooltip = get_key_tooltip(sec, keys[current_key])
             else:
-                tooltip = "Retour au menu principal"
+                tooltip = "Back to main menu"
         draw_tooltip(stdscr, tooltip)
 
         stdscr.refresh()
