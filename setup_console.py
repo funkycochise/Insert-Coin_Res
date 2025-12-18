@@ -81,11 +81,11 @@ DUALSDRAM_DESC = {
 }
 
 SECTION_TOOLTIPS = {
-    "update": "Options de mise à jour et configuration des cores",
-    "console": "Paramètres liés aux cores consoles",
-    "clean": "Supprime ou nettoie des fichiers temporaires ou inutiles",
-    "folder": "Configuration des dossiers à afficher",
-    "Exit": "Quitter le menu"
+    "update": "Settings for Update",
+    "console": "Settings for Console Cores",
+    "clean": "Settings for Cleaning for obsolete cores and useless files",
+    "folder": "Settings for Folders to display",
+    "Exit": "Exit"
 }
 
 KEY_TOOLTIPS = {
@@ -95,44 +95,49 @@ KEY_TOOLTIPS = {
         "gnw_rom": "Installs missing Game & Watch roms",
         "additional_res": "Installs additional resources",
         "console_core": "Updates console cores",
-        "dualsdram": "Selects single, dual or both SDRAM cores"
+        "dualsdram": "Selects single, dual or both SDRAM cores",
+        "Exit": "Back to main menu"
     },
     "console": {
-        "psx": "PlayStation",
-        "s32x": "Sega 32X",
-        "saturn": "Sega Saturn",
-        "sgb": "Super Game Boy",
-        "neogeo": "Neo Geo",
-        "n64": "Nintendo 64",
-        "jaguar": "Atari Jaguar",
-        "cdi": "Philips CD-i",
-        "pce": "PC Engine / TurboGrafx-16",
-        "nes": "Nintendo Entertainment System",
-        "snes": "Super Nintendo"
+        "psx": "Installs Sony PlayStation core ",
+        "s32x": "Installs Sega 32X core",
+        "saturn": "Installs Sega Saturn core",
+        "sgb": "Installs Nintendo Super Game Boy core",
+        "neogeo": "Installs SNK Neo Geo core ",
+        "n64": "Installs Nintendo 64 core",
+        "jaguar": "Installs Atari Jaguar core",
+        "cdi": "Installs Philips CD-i core",
+        "pce": "Installs PC Engine/TurboGrafx-16 core ",
+        "nes": "Installs Nintendo NES core",
+        "snes": "Installs Super Nintendo core",
+        "Exit": "Back to main menu "
     },
     "clean": {
-        "console_mgl": "Supprime les fichiers MGL obsolètes",
-        "obsolete_core": "Supprime les cores obsolètes",
-        "remove_other": "Supprime les autres fichiers inutiles"
-    },
+        "console_mgl": "Removes additional console mgl",
+        "obsolete_core": "Removes deprecated cores",
+        "remove_other": "Removes other folder",
+        "Exit": "Back to main menu "
+    },    
     "folder": {
-        "essential": "Dossier essentiel à afficher",
-        "rootfolder": "Afficher le dossier racine",
-        "show_system": "Afficher le système",
-        "show_genre": "Afficher par genre",
-        "manufacturer_subfolder": "Sous-dossier fabricant",
-        "action": "Afficher les jeux action",
-        "beat": "Afficher les jeux beat 'em up",
-        "horizontal": "Afficher les jeux horizontal",
-        "newest": "Afficher les derniers jeux",
-        "puzzle": "Afficher les jeux puzzle",
-        "sport": "Afficher les jeux sport",
-        "stg_h": "Jeux shoot horizontal",
-        "stg_v": "Jeux shoot vertical",
-        "vertical": "Jeux vertical",
-        "vsf": "Jeux VS Fighting",
-        "rng_h": "Jeux racing horizontal",
-        "rng_v": "Jeux racing vertical"
+        "console_mgl": "Removes additional console mgl",
+        "essential": "Creates menu for essential Titles",
+        "rootfolder": "Creates Insert-Coin folder at root",
+        "show_system": "Creates System menus",
+        "show_genre": "Creates genre menus",
+        "manufacturer_subfolder": "Creates manufacturer subfolder",
+        "action": "Creates Action Games menu",
+        "beat": "Creates Beat'em up Games menu",
+        "horizontal": "Creates Horizontal Games menu",
+        "newest": "Creates menu for newest Titles",
+        "puzzle": "Creates Puzzle Games menu",
+        "sport": "Creates Sport Games menu",
+        "stg_h": "Creates Horizontal Shooting Games menu ",
+        "stg_v": "Creates Vertical Shooting Games menu",
+        "vertical": "Creates Vertical Games menu",
+        "vsf": "Creates versus Fighting Games menu",
+        "rng_h": "Creates Horizontal Run'n'Gun Games menu ",
+        "rng_v": "Creates Vertical Run'n'Gun Games menu",        
+        "Exit": "Back to main menu "
     }
 }
 
