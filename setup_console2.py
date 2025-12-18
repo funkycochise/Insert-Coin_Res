@@ -80,6 +80,8 @@ SECTION_TOOLTIPS = {
     "console": "Settings for Console Cores",
     "clean": "Settings for Cleaning for obsolete cores and useless files",
     "folder": "Settings for Folders to display",
+    "Save": "Save modifications",
+    "Reset": "Reset to default values",
     "Exit": "Exit"
 }
 
