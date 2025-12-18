@@ -1,16 +1,79 @@
 import curses
 import configparser
 import textwrap
+import os
 
 INI_FILE = "setup.ini"
-IGNORE_SECTIONS = ["reserved", "setup"]  # Ne pas mettre les sections à afficher
+IGNORE_SECTIONS = ["reserved", "setup"]  # Ne pas afficher ces sections
 
+# --- Création du fichier INI par défaut si inexistant ---
+if not os.path.exists(INI_FILE):
+    parser = configparser.ConfigParser()
+
+    # Section update
+    parser["update"] = {
+        "main_mister": "0",
+        "mame_rom": "1",
+        "gnw_rom": "1",
+        "additional_res": "0",
+        "console_core": "0",
+        "dualsdram": "0"
+    }
+
+    # Section console
+    parser["console"] = {
+        "psx": "1",
+        "s32x": "0",
+        "saturn": "1",
+        "sgb": "0",
+        "neogeo": "1",
+        "n64": "1",
+        "jaguar": "1",
+        "cdi": "1",
+        "pce": "1",
+        "nes": "1",
+        "snes": "1"
+    }
+
+    # Section clean
+    parser["clean"] = {
+        "console_mgl": "0",
+        "obsolete_core": "1",
+        "remove_other": "0"
+    }
+
+    # Section folder
+    parser["folder"] = {
+        "essential": "1",
+        "rootfolder": "0",
+        "show_system": "1",
+        "show_genre": "1",
+        "manufacturer_subfolder": "0",
+        "action": "1",
+        "beat": "1",
+        "horizontal": "1",
+        "newest": "1",
+        "puzzle": "1",
+        "sport": "1",
+        "stg_h": "1",
+        "stg_v": "1",
+        "vertical": "1",
+        "vsf": "1",
+        "rng_h": "1",
+        "rng_v": "1"
+    }
+
+    # Écriture du fichier
+    with open(INI_FILE, "w", encoding="utf-8") as f:
+        parser.write(f)
+
+# --- Lecture du fichier INI ---
 parser = configparser.ConfigParser()
 parser.optionxform = str
 parser.read(INI_FILE, encoding="utf-8")
-
 sections = [s for s in parser.sections() if s not in IGNORE_SECTIONS]
 
+# --- Constantes ---
 DUALSDRAM_DESC = {
     "0": "single SDRAM core",
     "1": "Dual SDRAM core",
@@ -21,8 +84,8 @@ SECTION_TOOLTIPS = {
     "update": "Options de mise à jour et configuration des cores",
     "console": "Paramètres liés aux cores consoles",
     "clean": "Supprime ou nettoie des fichiers temporaires ou inutiles",
-    "folder": "Folders to display",
-    "Exit": "Exit "
+    "folder": "Configuration des dossiers à afficher",
+    "Exit": "Quitter le menu"
 }
 
 KEY_TOOLTIPS = {
@@ -32,58 +95,51 @@ KEY_TOOLTIPS = {
         "gnw_rom": "Installs missing Game & Watch roms",
         "additional_res": "Installs additional resources",
         "console_core": "Updates console cores",
-        "dualsdram": "Selects single, dual or both SDRAM cores",
-        "Exit": "Back to main menu"
+        "dualsdram": "Selects single, dual or both SDRAM cores"
     },
     "console": {
-        "psx": "Installs Sony PlayStation core ",
-        "s32x": "Installs Sega 32X core",
-        "saturn": "Installs Sega Saturn core",
-        "sgb": "Installs Nintendo Super Game Boy core",
-        "neogeo": "Installs SNK Neo Geo core ",
-        "n64": "Installs Nintendo 64 core",
-        "jaguar": "Installs Atari Jaguar core",
-        "cdi": "Installs Philips CD-i core",
-        "pce": "Installs PC Engine/TurboGrafx-16 core ",
-        "nes": "Installs Nintendo NES core",
-        "snes": "Installs Super Nintendo core",
-        "Exit": "Back to main menu "
+        "psx": "PlayStation",
+        "s32x": "Sega 32X",
+        "saturn": "Sega Saturn",
+        "sgb": "Super Game Boy",
+        "neogeo": "Neo Geo",
+        "n64": "Nintendo 64",
+        "jaguar": "Atari Jaguar",
+        "cdi": "Philips CD-i",
+        "pce": "PC Engine / TurboGrafx-16",
+        "nes": "Nintendo Entertainment System",
+        "snes": "Super Nintendo"
     },
     "clean": {
-        "console_mgl": "Removes additional console mgl",
-        "obsolete_core": "Removes deprecated cores",
-        "remove_other": "Removes other folder",
-        "Exit": "Back to main menu "
+        "console_mgl": "Supprime les fichiers MGL obsolètes",
+        "obsolete_core": "Supprime les cores obsolètes",
+        "remove_other": "Supprime les autres fichiers inutiles"
     },
     "folder": {
-        "essential": "Creates menu for essential Titles",
-        "rootfolder": "Creates Insert-Coin folder at root",
-        "show_system": "Creates System menus",
-        "show_genre": "Creates genre menus",
-        "manufacturer_subfolder": "Creates manufacturer subfolder",
-        "action": "Creates Action Games menu",
-        "beat": "Creates Beat'em up Games menu",
-        "horizontal": "Creates Horizontal Games menu",
-        "newest": "Creates menu for newest Titles",
-        "puzzle": "Creates Puzzle Games menu",
-        "sport": "Creates Sport Games menu",
-        "stg_h": "Creates Horizontal Shooting Games menu ",
-        "stg_v": "Creates Vertical Shooting Games menu",
-        "vertical": "Creates Vertical Games menu",
-        "vsf": "Creates versus Fighting Games menu",
-        "rng_h": "Creates Horizontal Run'n'Gun Games menu ",
-        "rng_v": "Creates Vertical Run'n'Gun Games menu",
-        
-        "Exit": "Back to main menu "
+        "essential": "Dossier essentiel à afficher",
+        "rootfolder": "Afficher le dossier racine",
+        "show_system": "Afficher le système",
+        "show_genre": "Afficher par genre",
+        "manufacturer_subfolder": "Sous-dossier fabricant",
+        "action": "Afficher les jeux action",
+        "beat": "Afficher les jeux beat 'em up",
+        "horizontal": "Afficher les jeux horizontal",
+        "newest": "Afficher les derniers jeux",
+        "puzzle": "Afficher les jeux puzzle",
+        "sport": "Afficher les jeux sport",
+        "stg_h": "Jeux shoot horizontal",
+        "stg_v": "Jeux shoot vertical",
+        "vertical": "Jeux vertical",
+        "vsf": "Jeux VS Fighting",
+        "rng_h": "Jeux racing horizontal",
+        "rng_v": "Jeux racing vertical"
     }
 }
 
+# --- Fonctions ---
 def toggle_value(section, key):
     val = parser[section][key].strip()
-    if val == "0":
-        parser[section][key] = "1"
-    elif val == "1":
-        parser[section][key] = "0"
+    parser[section][key] = "1" if val == "0" else "0"
     with open(INI_FILE, "w", encoding="utf-8") as f:
         parser.write(f)
 
@@ -100,6 +156,8 @@ def get_section_tooltip(section):
     return SECTION_TOOLTIPS.get(section, "")
 
 def get_key_tooltip(section, key):
+    if key == "Exit":
+        return "Retour au menu principal"
     return KEY_TOOLTIPS.get(section, {}).get(key, "")
 
 def draw_tooltip(stdscr, text):
@@ -112,6 +170,7 @@ def draw_tooltip(stdscr, text):
     for i, line in enumerate(lines):
         stdscr.addstr(y + 1 + i, 1, line, curses.color_pair(1))
 
+# --- Programme principal ---
 def main(stdscr):
     curses.curs_set(0)
     stdscr.keypad(True)
@@ -165,16 +224,16 @@ def main(stdscr):
         tooltip = ""
         if mode == "section":
             sec_name = sections[current_section] if current_section < len(sections) else "Exit"
-            tooltip = get_section_tooltip(sec_name)                
+            tooltip = get_section_tooltip(sec_name)
         elif mode == "key":
             sec = sections[current_section]
             keys = list(parser[sec].keys())
             if current_key < len(keys):
                 tooltip = get_key_tooltip(sec, keys[current_key])
-            else:  # cas Exit
-                tooltip = KEY_TOOLTIPS.get(sec, {}).get("Exit", "Exit")                
-                
+            else:  # Exit
+                tooltip = get_key_tooltip(sec, "Exit")
         draw_tooltip(stdscr, tooltip)
+
         stdscr.refresh()
         key = stdscr.getch()
 
@@ -199,7 +258,7 @@ def main(stdscr):
                 sec = sections[current_section]
                 keys = list(parser[sec].keys())
                 current_key = current_key + 1 if current_key < len(keys) else 0
-        elif key in [10, 13]:  # Entrée
+        elif key in [10, 13, 32]:  # Entrée ou Espace (32 = code ASCII espace)
             if mode == "section":
                 if current_section == len(sections):
                     break
