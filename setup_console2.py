@@ -4,6 +4,20 @@ import textwrap
 import os
 import subprocess
 
+BANNER = [   
+" ██▓███▄    █  ██████▓█████ ██▀███ ▄▄▄█████▓    ▄████▄  ▒█████  ██▓███▄    █",
+"▓██▒██ ▀█   █▒██    ▒▓█   ▀▓██ ▒ ██▓  ██▒ ▓▒   ▒██▀ ▀█ ▒██▒  ██▓██▒██ ▀█   █",
+"▒██▓██  ▀█ ██░ ▓██▄  ▒███  ▓██ ░▄█ ▒ ▓██░ ▒░   ▒▓█    ▄▒██░  ██▒██▓██  ▀█ ██▒",
+"░██▓██▒  ▐▌██▒ ▒   ██▒▓█  ▄▒██▀▀█▄ ░ ▓██▓ ░    ▒▓▓▄ ▄██▒██   ██░██▓██▒  ▐▌██▒",
+"░██▒██░   ▓██▒██████▒░▒████░██▓ ▒██▒ ▒██▒ ░    ▒ ▓███▀ ░ ████▓▒░██▒██░   ▓██░",
+"░▓ ░ ▒░   ▒ ▒▒ ▒▓▒ ▒ ░░ ▒░ ░ ▒▓ ░▒▓░ ▒ ░░      ░ ░▒ ▒  ░ ▒░▒░▒░░▓ ░ ▒░   ▒ ▒ ",
+" ▒ ░ ░░   ░ ▒░ ░▒  ░ ░░ ░  ░ ░▒ ░ ▒░   ░         ░  ▒    ░ ▒ ▒░ ▒ ░ ░░   ░ ▒░",
+" ▒ ░  ░   ░ ░░  ░  ░    ░    ░░   ░  ░         ░       ░ ░ ░ ▒  ▒ ░  ░   ░ ░ ",
+" ░          ░      ░    ░  ░  ░                ░ ░         ░ ░  ░          ░ ",
+"                                               ░                             ",
+"    "
+]
+
 INI_FILE = "setup.ini"
 IGNORE_SECTIONS = ["reserved", "setup"]
 
@@ -415,19 +429,27 @@ def main(stdscr):
     curses.start_color()
     curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
     main_menu = ["Run", "Setup", "Save", "Reset", "Exit"]
     current_selection = 0
 
     while True:
         stdscr.clear()
-        stdscr.addstr(0, 0, "↑/↓ to browse, Enter/Space to select, Escape to exit", curses.color_pair(1))
+        
+        # --- Affichage bannière ---
+        banner_height = len(BANNER)
+        
+        for i, line in enumerate(BANNER):
+            stdscr.addstr(i, 0, line, curses.color_pair(3))
+            
+        stdscr.addstr(banner_height, 0, "↑/↓ to browse, Enter/Space to select, Escape to exit", curses.color_pair(1))
 
         for i, item in enumerate(main_menu):
             if i == current_selection:
-                stdscr.addstr(2 + i, 0, "> " + item, curses.color_pair(1) | curses.A_REVERSE)
+                stdscr.addstr(banner_height + 1 + i, 0, "> " + item, curses.color_pair(1) | curses.A_REVERSE)
             else:
-                stdscr.addstr(2 + i, 0, "  " + item, curses.color_pair(2))
+                stdscr.addstr(banner_height + 1 + i, 0, "  " + item, curses.color_pair(2))
 
         tooltip = {
             "Run": "Execute run.sh script",
