@@ -4,46 +4,37 @@ import textwrap
 import os
 
 INI_FILE = "setup.ini"
-IGNORE_SECTIONS = ["reserved", "setup"]  # Ne pas afficher ces sections
+IGNORE_SECTIONS = ["reserved", "setup"]
 
-# --- Création du fichier INI par défaut si inexistant ---
-if not os.path.exists(INI_FILE):
-    parser = configparser.ConfigParser()
-
-    # Section update
-    parser["update"] = {
+# --- Valeurs par défaut ---
+DEFAULT_CONFIG = {
+    "update": {
         "main_mister": "0",
-        "mame_rom": "1",
-        "gnw_rom": "1",
+        "mame_rom": "0",
+        "gnw_rom": "0",
         "additional_res": "0",
         "console_core": "0",
         "dualsdram": "0"
-    }
-
-    # Section console
-    parser["console"] = {
-        "psx": "1",
+    },
+    "console": {
+        "psx": "0",
         "s32x": "0",
-        "saturn": "1",
+        "saturn": "0",
         "sgb": "0",
-        "neogeo": "1",
-        "n64": "1",
-        "jaguar": "1",
-        "cdi": "1",
-        "pce": "1",
-        "nes": "1",
-        "snes": "1"
-    }
-
-    # Section clean
-    parser["clean"] = {
+        "neogeo": "0",
+        "n64": "0",
+        "jaguar": "0",
+        "cdi": "0",
+        "pce": "0",
+        "nes": "0",
+        "snes": "0"
+    },
+    "clean": {
         "console_mgl": "0",
         "obsolete_core": "1",
         "remove_other": "0"
-    }
-
-    # Section folder
-    parser["folder"] = {
+    },
+    "folder": {
         "essential": "1",
         "rootfolder": "0",
         "show_system": "1",
@@ -62,29 +53,35 @@ if not os.path.exists(INI_FILE):
         "rng_h": "1",
         "rng_v": "1"
     }
+}
 
-    # Écriture du fichier
+# --- Création du fichier INI si inexistant ---
+if not os.path.exists(INI_FILE):
+    parser = configparser.ConfigParser()
+    for sec, opts in DEFAULT_CONFIG.items():
+        parser[sec] = opts
     with open(INI_FILE, "w", encoding="utf-8") as f:
         parser.write(f)
 
-# --- Lecture du fichier INI ---
+# --- Lecture INI et copie en mémoire ---
 parser = configparser.ConfigParser()
 parser.optionxform = str
 parser.read(INI_FILE, encoding="utf-8")
 sections = [s for s in parser.sections() if s not in IGNORE_SECTIONS]
 
-# --- Constantes ---
-DUALSDRAM_DESC = {
-    "0": "single SDRAM core",
-    "1": "Dual SDRAM core",
-    "2": "Both Single and Dual SDRAM cores"
-}
+# Copie des valeurs dans un dictionnaire modifiable
+config = {sec: dict(parser[sec]) for sec in parser.sections() if sec not in IGNORE_SECTIONS}
+
+# --- Tooltips ---
+DUALSDRAM_DESC = {"0": "single SDRAM core", "1": "Dual SDRAM core", "2": "Both Single and Dual SDRAM cores"}
 
 SECTION_TOOLTIPS = {
     "update": "Settings for Update",
     "console": "Settings for Console Cores",
     "clean": "Settings for Cleaning for obsolete cores and useless files",
     "folder": "Settings for Folders to display",
+    "Save": "Save modifications",
+    "Reset": "Reset to default values",
     "Exit": "Exit"
 }
 
@@ -116,7 +113,7 @@ KEY_TOOLTIPS = {
         "console_mgl": "Removes additional console mgl",
         "obsolete_core": "Removes deprecated cores",
         "remove_other": "Removes other folder",
-        "Exit": "Back to main menu "
+        "Exit": "Back to main menu"
     },    
     "folder": {
         "console_mgl": "Removes additional console mgl",
@@ -137,33 +134,42 @@ KEY_TOOLTIPS = {
         "vsf": "Creates versus Fighting Games menu",
         "rng_h": "Creates Horizontal Run'n'Gun Games menu ",
         "rng_v": "Creates Vertical Run'n'Gun Games menu",        
-        "Exit": "Back to main menu "
+        "Exit": "Back to main menu"
     }
 }
 
-# --- Fonctions ---
-def toggle_value(section, key):
-    val = parser[section][key].strip()
-    parser[section][key] = "1" if val == "0" else "0"
+# --- Fonctions pour manipuler les valeurs en mémoire ---
+def toggle_value(sec, key):
+    val = config[sec][key].strip()
+    if key == "dualsdram":
+        cycle_dualsdram(sec, key)
+    else:
+        config[sec][key] = "1" if val == "0" else "0"
+
+def cycle_dualsdram(sec, key):
+    val = config[sec][key].strip()
+    next_val = {"0": "1", "1": "2", "2": "0"}.get(val, "0")
+    config[sec][key] = next_val
+
+def save_config():
+    parser = configparser.ConfigParser()
+    for sec, opts in config.items():
+        parser[sec] = opts
     with open(INI_FILE, "w", encoding="utf-8") as f:
         parser.write(f)
 
-def cycle_dualsdram(section, key):
-    val = parser[section][key].strip()
-    if val not in ["0", "1", "2"]:
-        val = "0"
-    next_val = {"0": "1", "1": "2", "2": "0"}[val]
-    parser[section][key] = next_val
-    with open(INI_FILE, "w", encoding="utf-8") as f:
-        parser.write(f)
+def reset_config():
+    global config
+    config = {sec: dict(opts) for sec, opts in DEFAULT_CONFIG.items() if sec in sections}
 
-def get_section_tooltip(section):
-    return SECTION_TOOLTIPS.get(section, "")
+# --- Tooltips ---
+def get_section_tooltip(sec):
+    return SECTION_TOOLTIPS.get(sec, "")
 
-def get_key_tooltip(section, key):
+def get_key_tooltip(sec, key):
     if key == "Exit":
         return "Retour au menu principal"
-    return KEY_TOOLTIPS.get(section, {}).get(key, "")
+    return KEY_TOOLTIPS.get(sec, {}).get(key, "")
 
 def draw_tooltip(stdscr, text):
     if not text:
@@ -183,60 +189,61 @@ def main(stdscr):
     curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
 
+    # Menu principal : ajout de Save et Reset
+    main_menu = sections + ["Save", "Reset", "Exit"]
+
     current_section = 0
     current_key = 0
     mode = "section"
 
     while True:
         stdscr.clear()
-        stdscr.addstr(0, 0, "↑/↓ naviguer, Entrée toggle/cycle dualsdram, Échap pour quitter", curses.color_pair(1))
+        stdscr.addstr(0, 0, "↑/↓ to browse, Enter/Space to toggle, Escape to exit", curses.color_pair(1))
+        #stdscr.addstr(1, 0,"ligne 2", curses.color_pair(1))
 
         # --- Affichage menu ---
         if mode == "section":
-            stdscr.addstr(2, 0, "Sélectionne une section :", curses.color_pair(1))
-            for i, sec in enumerate(sections):
+            stdscr.addstr(2, 0, "Select :", curses.color_pair(1))
+            for i, sec in enumerate(main_menu):
                 if i == current_section:
                     stdscr.addstr(3 + i, 0, "> " + sec, curses.color_pair(1) | curses.A_REVERSE)
                 else:
                     stdscr.addstr(3 + i, 0, "  " + sec, curses.color_pair(2))
-            exit_index = len(sections)
-            if current_section == exit_index:
-                stdscr.addstr(3 + exit_index, 0, "> Exit", curses.color_pair(1) | curses.A_REVERSE)
-            else:
-                stdscr.addstr(3 + exit_index, 0, "  Exit", curses.color_pair(2))
-        else:  # mode == "key"
-            sec = sections[current_section]
-            keys = list(parser[sec].keys())
-            stdscr.addstr(2, 0, f"Sélectionne une clé dans [{sec}] :", curses.color_pair(1))
-            for i, k in enumerate(keys):
-                val = parser[sec][k]
-                if k == "dualsdram":
-                    desc = DUALSDRAM_DESC.get(val, "")
-                    line = f"{k} = {val} ({desc})"
+        else:
+            sec = main_menu[current_section]
+            if sec in config:
+                keys = list(config[sec].keys())
+                stdscr.addstr(2, 0, f"Select option in [{sec}] :", curses.color_pair(1))
+                for i, k in enumerate(keys):
+                    val = config[sec][k]
+                    if k == "dualsdram":
+                        desc = DUALSDRAM_DESC.get(val, "")
+                        line = f"{k} = {val} ({desc})"
+                    else:
+                        line = f"{k} = {val}"
+                    if i == current_key:
+                        stdscr.addstr(3 + i, 0, "> " + line, curses.color_pair(1) | curses.A_REVERSE)
+                    else:
+                        stdscr.addstr(3 + i, 0, "  " + line, curses.color_pair(2))
+                # Ajouter Exit pour revenir au menu principal
+                exit_index = len(keys)
+                if current_key == exit_index:
+                    stdscr.addstr(3 + exit_index, 0, "> Exit", curses.color_pair(1) | curses.A_REVERSE)
                 else:
-                    line = f"{k} = {val}"
-                if i == current_key:
-                    stdscr.addstr(3 + i, 0, "> " + line, curses.color_pair(1) | curses.A_REVERSE)
-                else:
-                    stdscr.addstr(3 + i, 0, "  " + line, curses.color_pair(2))
-            exit_index = len(keys)
-            if current_key == exit_index:
-                stdscr.addstr(3 + exit_index, 0, "> Exit", curses.color_pair(1) | curses.A_REVERSE)
-            else:
-                stdscr.addstr(3 + exit_index, 0, "  Exit", curses.color_pair(2))
+                    stdscr.addstr(3 + exit_index, 0, "  Exit", curses.color_pair(2))
 
         # --- Affichage tooltip ---
         tooltip = ""
         if mode == "section":
-            sec_name = sections[current_section] if current_section < len(sections) else "Exit"
-            tooltip = get_section_tooltip(sec_name)
-        elif mode == "key":
-            sec = sections[current_section]
-            keys = list(parser[sec].keys())
+            sec_name = main_menu[current_section]
+            tooltip = get_section_tooltip(sec_name) if sec_name in SECTION_TOOLTIPS else ""
+        else:
+            sec = main_menu[current_section]
+            keys = list(config[sec].keys())
             if current_key < len(keys):
                 tooltip = get_key_tooltip(sec, keys[current_key])
-            else:  # Exit
-                tooltip = get_key_tooltip(sec, "Exit")
+            else:
+                tooltip = "Back to main menu"
         draw_tooltip(stdscr, tooltip)
 
         stdscr.refresh()
@@ -251,36 +258,38 @@ def main(stdscr):
                 break
         elif key == curses.KEY_UP:
             if mode == "section":
-                current_section = current_section - 1 if current_section > 0 else len(sections)
+                current_section = (current_section - 1) % len(main_menu)
             elif mode == "key":
-                sec = sections[current_section]
-                keys = list(parser[sec].keys())
-                current_key = current_key - 1 if current_key > 0 else len(keys)
+                sec = main_menu[current_section]
+                keys = list(config[sec].keys())
+                current_key = (current_key - 1) % (len(keys) + 1)
         elif key == curses.KEY_DOWN:
             if mode == "section":
-                current_section = current_section + 1 if current_section < len(sections) else 0
+                current_section = (current_section + 1) % len(main_menu)
             elif mode == "key":
-                sec = sections[current_section]
-                keys = list(parser[sec].keys())
-                current_key = current_key + 1 if current_key < len(keys) else 0
-        elif key in [10, 13, 32]:  # Entrée ou Espace (32 = code ASCII espace)
+                sec = main_menu[current_section]
+                keys = list(config[sec].keys())
+                current_key = (current_key + 1) % (len(keys) + 1)
+        elif key in [10, 13, 32]:  # Entrée ou Espace
             if mode == "section":
-                if current_section == len(sections):
+                sel = main_menu[current_section]
+                if sel == "Exit":
                     break
+                elif sel == "Save":
+                    save_config()
+                elif sel == "Reset":
+                    reset_config()
                 else:
                     mode = "key"
                     current_key = 0
             else:
-                sec = sections[current_section]
-                keys = list(parser[sec].keys())
+                sec = main_menu[current_section]
+                keys = list(config[sec].keys())
                 if current_key == len(keys):
                     mode = "section"
                     current_key = 0
                 else:
                     k = keys[current_key]
-                    if k == "dualsdram":
-                        cycle_dualsdram(sec, k)
-                    else:
-                        toggle_value(sec, k)
+                    toggle_value(sec, k)
 
 curses.wrapper(main)
