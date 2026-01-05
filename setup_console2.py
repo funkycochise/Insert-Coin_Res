@@ -2,6 +2,7 @@ import curses
 import configparser
 import textwrap
 import os
+import subprocess
 
 INI_FILE = "setup.ini"
 IGNORE_SECTIONS = ["reserved", "setup"]
@@ -96,25 +97,25 @@ KEY_TOOLTIPS = {
         "Exit": "Back to main menu"
     },
     "console": {
-        "psx": "Installs Sony PlayStation core ",
+        "psx": "Installs Sony PlayStation core",
         "s32x": "Installs Sega 32X core",
         "saturn": "Installs Sega Saturn core",
         "sgb": "Installs Nintendo Super Game Boy core",
-        "neogeo": "Installs SNK Neo Geo core ",
+        "neogeo": "Installs SNK Neo Geo core",
         "n64": "Installs Nintendo 64 core",
         "jaguar": "Installs Atari Jaguar core",
         "cdi": "Installs Philips CD-i core",
-        "pce": "Installs PC Engine/TurboGrafx-16 core ",
+        "pce": "Installs PC Engine/TurboGrafx-16 core",
         "nes": "Installs Nintendo NES core",
         "snes": "Installs Super Nintendo core",
-        "Exit": "Back to main menu "
+        "Exit": "Back to main menu"
     },
     "clean": {
         "console_mgl": "Removes additional console mgl",
         "obsolete_core": "Removes deprecated cores",
         "remove_other": "Removes other folder",
         "Exit": "Back to main menu"
-    },    
+    },
     "folder": {
         "console_mgl": "Removes additional console mgl",
         "essential": "Creates menu for essential Titles",
@@ -128,12 +129,12 @@ KEY_TOOLTIPS = {
         "newest": "Creates menu for newest Titles",
         "puzzle": "Creates Puzzle Games menu",
         "sport": "Creates Sport Games menu",
-        "stg_h": "Creates Horizontal Shooting Games menu ",
+        "stg_h": "Creates Horizontal Shooting Games menu",
         "stg_v": "Creates Vertical Shooting Games menu",
         "vertical": "Creates Vertical Games menu",
         "vsf": "Creates versus Fighting Games menu",
-        "rng_h": "Creates Horizontal Run'n'Gun Games menu ",
-        "rng_v": "Creates Vertical Run'n'Gun Games menu",        
+        "rng_h": "Creates Horizontal Run'n'Gun Games menu",
+        "rng_v": "Creates Vertical Run'n'Gun Games menu",
         "Exit": "Back to main menu"
     }
 }
@@ -181,24 +182,17 @@ def draw_tooltip(stdscr, text):
     for i, line in enumerate(lines):
         stdscr.addstr(y + 1 + i, 1, line, curses.color_pair(1))
 
-# --- Programme principal ---
-def main(stdscr):
-    curses.curs_set(0)
-    stdscr.keypad(True)
-    curses.start_color()
-    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
-    curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
-
-    # Menu principal : ajout de Save et Reset
-    main_menu = sections + ["Save", "Reset", "Exit"]
-
+# --- Menu Setup séparé ---
+def run_setup_menu(stdscr):
     current_section = 0
     current_key = 0
     mode = "section"
 
+    main_menu = sections
+
     while True:
         stdscr.clear()
-        stdscr.addstr(0, 0, "↑/↓ to browse, Enter/Space to toggle, Escape to exit", curses.color_pair(1))
+        stdscr.addstr(0, 0, "↑/↓ to browse, Enter/Space to toggle, Escape to go back", curses.color_pair(1))
 
         # --- Affichage menu ---
         if mode == "section":
@@ -210,32 +204,30 @@ def main(stdscr):
                     stdscr.addstr(3 + i, 0, "  " + sec, curses.color_pair(2))
         else:
             sec = main_menu[current_section]
-            if sec in config:
-                keys = list(config[sec].keys())
-                stdscr.addstr(2, 0, f"Select option in [{sec}] :", curses.color_pair(1))
-                for i, k in enumerate(keys):
-                    val = config[sec][k]
-                    if k == "dualsdram":
-                        desc = DUALSDRAM_DESC.get(val, "")
-                        line = f"{k} = {val} ({desc})"
-                    else:
-                        line = f"{k} = {val}"
-                    if i == current_key:
-                        stdscr.addstr(3 + i, 0, "> " + line, curses.color_pair(1) | curses.A_REVERSE)
-                    else:
-                        stdscr.addstr(3 + i, 0, "  " + line, curses.color_pair(2))
-                # Ajouter Exit pour revenir au menu principal
-                exit_index = len(keys)
-                if current_key == exit_index:
-                    stdscr.addstr(3 + exit_index, 0, "> Exit", curses.color_pair(1) | curses.A_REVERSE)
+            keys = list(config[sec].keys())
+            stdscr.addstr(2, 0, f"Select option in [{sec}] :", curses.color_pair(1))
+            for i, k in enumerate(keys):
+                val = config[sec][k]
+                if k == "dualsdram":
+                    desc = DUALSDRAM_DESC.get(val, "")
+                    line = f"{k} = {val} ({desc})"
                 else:
-                    stdscr.addstr(3 + exit_index, 0, "  Exit", curses.color_pair(2))
+                    line = f"{k} = {val}"
+                if i == current_key:
+                    stdscr.addstr(3 + i, 0, "> " + line, curses.color_pair(1) | curses.A_REVERSE)
+                else:
+                    stdscr.addstr(3 + i, 0, "  " + line, curses.color_pair(2))
+            exit_index = len(keys)
+            if current_key == exit_index:
+                stdscr.addstr(3 + exit_index, 0, "> Exit", curses.color_pair(1) | curses.A_REVERSE)
+            else:
+                stdscr.addstr(3 + exit_index, 0, "  Exit", curses.color_pair(2))
 
         # --- Affichage tooltip ---
         tooltip = ""
         if mode == "section":
             sec_name = main_menu[current_section]
-            tooltip = get_section_tooltip(sec_name) if sec_name in SECTION_TOOLTIPS else ""
+            tooltip = get_section_tooltip(sec_name)
         else:
             sec = main_menu[current_section]
             keys = list(config[sec].keys())
@@ -271,16 +263,8 @@ def main(stdscr):
                 current_key = (current_key + 1) % (len(keys) + 1)
         elif key in [10, 13, 32]:  # Entrée ou Espace
             if mode == "section":
-                sel = main_menu[current_section]
-                if sel == "Exit":
-                    break
-                elif sel == "Save":
-                    save_config()
-                elif sel == "Reset":
-                    reset_config()
-                else:
-                    mode = "key"
-                    current_key = 0
+                mode = "key"
+                current_key = 0
             else:
                 sec = main_menu[current_section]
                 keys = list(config[sec].keys())
@@ -290,5 +274,67 @@ def main(stdscr):
                 else:
                     k = keys[current_key]
                     toggle_value(sec, k)
+
+# --- Menu principal ---
+def main(stdscr):
+    curses.curs_set(0)
+    stdscr.keypad(True)
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
+
+    main_menu = ["Run", "Setup", "Save", "Reset", "Exit"]
+    current_selection = 0
+
+    while True:
+        stdscr.clear()
+        stdscr.addstr(0, 0, "↑/↓ to browse, Enter/Space to select, Escape to exit", curses.color_pair(1))
+
+        # Affichage menu
+        for i, item in enumerate(main_menu):
+            if i == current_selection:
+                stdscr.addstr(2 + i, 0, "> " + item, curses.color_pair(1) | curses.A_REVERSE)
+            else:
+                stdscr.addstr(2 + i, 0, "  " + item, curses.color_pair(2))
+
+        # Tooltip
+        tooltip = {
+            "Run": "Run Insert-Coin",
+            "Setup": "Insert-Coin configuration",
+            "Save": "Save current configuration",
+            "Reset": "Reset configuration to defaults",
+            "Exit": "Exit"
+        }.get(main_menu[current_selection], "")
+        draw_tooltip(stdscr, tooltip)
+
+        stdscr.refresh()
+        key = stdscr.getch()
+
+        # Gestion touches
+        if key == 27:  # Échap
+            break
+        elif key == curses.KEY_UP:
+            current_selection = (current_selection - 1) % len(main_menu)
+        elif key == curses.KEY_DOWN:
+            current_selection = (current_selection + 1) % len(main_menu)
+        elif key in [10, 13, 32]:  # Entrée ou Espace
+            sel = main_menu[current_selection]
+            if sel == "Exit":
+                break
+            elif sel == "Run":
+                curses.endwin()
+                subprocess.run(["bash", "run.sh"])
+                stdscr = curses.initscr()
+                curses.curs_set(0)
+                stdscr.keypad(True)
+                curses.start_color()
+                curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
+                curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
+            elif sel == "Setup":
+                run_setup_menu(stdscr)
+            elif sel == "Save":
+                save_config()
+            elif sel == "Reset":
+                reset_config()
 
 curses.wrapper(main)
