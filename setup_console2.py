@@ -452,7 +452,7 @@ def main(stdscr):
                 stdscr.addstr(banner_height + 1 + i, 0, "  " + item, curses.color_pair(2))
 
         tooltip = {
-            "Run": "Execute run.sh script",
+            "Run": "Run Insert-Coin",
             "Setup": "Modify configuration",
             "Save": "Save current configuration",
             "Reset": "Reset configuration to defaults",
@@ -488,5 +488,6 @@ def main(stdscr):
                 save_config()
             elif sel == "Reset":
                 reset_config()
+
 
 curses.wrapper(main)
