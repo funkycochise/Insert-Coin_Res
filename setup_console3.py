@@ -125,8 +125,8 @@ DUALSDRAM_DESC = {"0": "single SDRAM core", "1": "Dual SDRAM core", "2": "Both S
 SECTION_TOOLTIPS = {
     "update": "Settings for Update",
     "console": "Settings for Console Cores",
-    "clean": "Settings for Cleaning for obsolete cores and useless files",
-    "folder": "Settings for Folders to display"
+    "clean": "Settings for Cleaning obsolete cores and useless files",
+    "folder": "Settings for folders to create"
 }
 
 KEY_TOOLTIPS = {
@@ -150,7 +150,25 @@ KEY_TOOLTIPS = {
     "clean": {"console_mgl": "Removes additional console mgl",
               "obsolete_core": "Removes deprecated cores",
               "remove_other": "Removes other folder"},
-    "folder": {}  # On peut ajouter plus tard
+    "folder": {
+    "essential": "Generate essential games folder",
+    "rootfolder": "Generate Insert-Coin folder at root intead of _Arcade",
+    "show_system": "Generate separate folders for systems",
+    "show_genre": "Generate folders by genre",
+    "manufacturer_subfolder": "Generate subfolders by manufacturer",
+    "action": "Generate action game folder",
+    "beat": "Generate beat'em up game folder",
+    "horizontal": "Generate horizontal game folder",
+    "newest": "Generate newest game folder",
+    "puzzle": "Generate puzzle game folder",
+    "sport": "Generate sports game folder",
+    "stg_h": "Generate horizontal STG game folder",
+    "stg_v": "Generate vertical STG game folder",
+    "vertical": "Generate vertical game folder",
+    "vsf": "Generate VS fighting game folder",
+    "rng_h": "Generate horizontal run'n'gun game folder",
+    "rng_v": "Generate vertical run'n'gun game folder"
+}
 }
 
 # --- Fonctions INI ---
@@ -232,7 +250,7 @@ def run_setup_menu(stdscr):
 
     while True:
         stdscr.clear()
-        stdscr.addstr(0,0,"↑/↓ browse, Enter/Space toggle, Esc back", curses.color_pair(1))
+        stdscr.addstr(0,0,"↑/↓ browse, Enter/Space toggle, Esc exit", curses.color_pair(1))
 
         if mode == "section":
             stdscr.addstr(2,0,"Select section:", curses.color_pair(1))
@@ -303,7 +321,11 @@ def main(stdscr):
             style=curses.A_REVERSE if i==current_selection else 0
             stdscr.addstr(banner_height+1+i,0,"> "+item if i==current_selection else "  "+item,curses.color_pair(1)|style if i==current_selection else curses.color_pair(2))
 
-        tooltip={"Run":"Run Insert-Coin","Setup":"Modify configuration","Save":"Save current config","Reset":"Reset config","Exit":"Quit program"}.get(main_menu[current_selection],"")
+        tooltip={"Run":"Run Insert-Coin",
+        "Setup":"Edit Setup",
+        "Save":"Save current Setup",
+        "Reset":"Reset Setup to default",
+        "Exit":"Quit program"}.get(main_menu[current_selection],"")
         draw_tooltip(stdscr,tooltip)
         stdscr.refresh()
         key=stdscr.getch()
