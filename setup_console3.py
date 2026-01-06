@@ -20,14 +20,14 @@ BANNER = [
 
 INI_FILE = "setup.ini"
 NAMES_INI_FILE = "names.ini"
-IGNORE_SECTIONS = ["reserved", "setup"]
-RESERVED_VERSION = "1.0"
+IGNORE_SECTIONS = ["setup"]
+IGNORE_SECTIONS = ["setup"]
 
 # --- Valeurs par défaut ---
 DEFAULT_CONFIG = {
     "update": {"main_mister": "0","mame_rom": "0","gnw_rom": "0","additional_res": "0","console_core": "0","dualsdram": "0"},
     "console": {"psx": "0","s32x": "0","saturn": "0","sgb": "0","neogeo": "0","n64": "0","jaguar": "0","cdi": "0","pce": "0","nes": "0","snes": "0"},
-    "clean": {"console_mgl": "0","obsolete_core": "1","remove_other": "0"},
+    "clean": {"console_mgl": "0","obsolete_core": "0","remove_other": "0"},
     "folder": {"essential": "1","rootfolder": "0","show_system": "1","show_genre": "1","manufacturer_subfolder": "0","action": "1","beat": "1","horizontal": "1","newest": "1","puzzle": "1","sport": "1","stg_h": "1","stg_v": "1","vertical": "1","vsf": "1","rng_h": "1","rng_v": "1"}
 }
 
@@ -213,7 +213,6 @@ def toggle_value(sec, key):
 
 def save_config():
     parser = configparser.ConfigParser()
-    parser["reserved"] = {"version": RESERVED_VERSION}
     for sec, opts in config.items():
         parser[sec] = opts
     with open(INI_FILE, "w", encoding="utf-8") as f:
