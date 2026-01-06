@@ -31,6 +31,95 @@ DEFAULT_CONFIG = {
     "folder": {"essential": "1","rootfolder": "0","show_system": "1","show_genre": "1","manufacturer_subfolder": "0","action": "1","beat": "1","horizontal": "1","newest": "1","puzzle": "1","sport": "1","stg_h": "1","stg_v": "1","vertical": "1","vsf": "1","rng_h": "1","rng_v": "1"}
 }
 
+# --- Valeurs par défaut pour names.ini ---
+NAMES_DEFAULT_CONFIG = {
+    "folder": {
+        "essential": "_#Essentials",
+        "newest": "_#Newest",
+        "genre_horizontal": "__Horizontal",
+        "genre_vertical": "__Vertical",
+        "insertcoin": "_#Insert-Coin",
+        "genre_action": "__Action",
+        "genre_beat": "__Beat'em up",
+        "genre_puzzle": "__Puzzle",
+        "genre_sport": "__Sport",
+        "genre_vsf": "__Vs Fighting",
+        "genre_stg_h": "__STG_H",
+        "genre_stg_v": "__STG_V",
+        "genre_rng_h": "__Run'n'Gun_H",
+        "genre_rng_v": "__Run'n'Gun_V",
+        "alpha": "_Alpha",
+        "atari": "_Atari",
+        "bagman": "_Bagman",
+        "bally_midway": "_Bally-midway",
+        "capcom": "_Capcom-Mitchell",
+        "cps1": "_CPS1",
+        "cps15": "_CPS15",
+        "cps2": "_CPS2",
+        "cave": "_Cave 68000",
+        "crazykong": "_Crazy Kong",
+        "deco": "_DataEast-Deco",
+        "exidy": "_Exidy",
+        "galaxian": "_Galaxian",
+        "gottlieb": "_Gottlieb",
+        "irem": "_Irem",
+        "irem62": "_Irem M62",
+        "irem72": "_Irem M72",
+        "irem90": "_Irem M90",
+        "irem92": "_Irem M92",
+        "irem92t": "_Irem M92t",
+        "irem107": "_Irem M107",
+        "jaleco": "_Jaleco",
+        "kiwako": "_Kiwako",
+        "konami": "_Konami",
+        "konamitwin16": "_Konami Twin16",
+        "ladybug": "_Ladybug",
+        "mcr1": "_MCR1",
+        "mcr2": "_MCR2",
+        "mcr3": "_MCR3",
+        "mcr3mono": "_Midway_MCR3Mono",
+        "mcr3scroll": "_Midway_MCR3Scroll",
+        "midwayy": "_Midway_YUnit",
+        "namco": "_Namco",
+        "namco_sys1": "_Namco-System-1",
+        "namco_sys86": "_Namco-System-86",
+        "neogeo": "_Neo-geo",
+        "nichibutsu": "_Nihon Bussan-Nichibutsu",
+        "nintendo": "_Nintendo",
+        "vs": "_Nintendo Vs.",
+        "pacman": "_Pacman",
+        "raizing": "_Raizing-8ing",
+        "rare": "_Rare",
+        "robotron": "_Robotron",
+        "scramble": "_Scramble",
+        "sega": "_Sega",
+        "outrun": "_Sega-Outrun",
+        "segasys1": "_Sega-System-1",
+        "segasys2": "_Sega-System-2",
+        "segasyse": "_Sega-System-E",
+        "segasys16": "_Sega-System-16",
+        "segasys18": "_Sega-System-18",
+        "segastv": "_Sega-Titan Video",
+        "snk": "_SNK",
+        "si": "_Space Invaders",
+        "stern": "_Stern",
+        "tad": "_Tad Corp",
+        "taito": "_Taito",
+        "taitof2": "_Taito-F2",
+        "taitosj": "_Taito-SJ",
+        "technos": "_Technos",
+        "technos16": "_Technos16",
+        "tecmo": "_Tehkan-Tecmo",
+        "toaplan": "_Toaplan",
+        "toaplan_stg": "_Toaplan_STG",
+        "universal": "_Universal",
+        "upl": "_Upl",
+        "williams": "_Williams"
+    }
+}
+
+
+
 DUALSDRAM_DESC = {"0": "single SDRAM core", "1": "Dual SDRAM core", "2": "Both Single and Dual SDRAM cores"}
 
 SECTION_TOOLTIPS = {
@@ -87,6 +176,7 @@ def ensure_ini(filename, default_config):
 
 # --- Initialisation des fichiers ---
 ensure_ini(INI_FILE, DEFAULT_CONFIG)
+ensure_ini(NAMES_INI_FILE, NAMES_DEFAULT_CONFIG)  # <-- même traitement que setup.ini
 
 # --- Lecture setup.ini ---
 parser = configparser.ConfigParser()
