@@ -22,6 +22,8 @@ INI_FILE = "setup.ini"
 NAMES_INI_FILE = "names.ini"
 IGNORE_SECTIONS = ["setup"]
 
+#RUN_CMD = ["bash", "run.sh"]
+RUN_CMD = None
 
 # --- Valeurs par défaut ---
 DEFAULT_CONFIG = {
@@ -300,59 +302,83 @@ def run_setup_menu(stdscr):
                         current_key = 0
                     else:
                         toggle_value(sec, keys[current_key])
-
+                        
+def do_run():
+    curses.endwin()
+    if RUN_CMD:
+        subprocess.run(RUN_CMD)
+    else:
+        print("Run simulé !")
+    return
+    
 # --- Menu Principal ---
 def main(stdscr):
     curses.curs_set(0)
     stdscr.keypad(True)
     curses.start_color()
-    curses.init_pair(1,curses.COLOR_CYAN,curses.COLOR_BLACK)
-    curses.init_pair(2,curses.COLOR_CYAN,curses.COLOR_BLACK)
-    curses.init_pair(3,curses.COLOR_RED,curses.COLOR_BLACK)
+    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-    main_menu=["Run","Setup","Save","Reset","Exit"]
-    current_selection=0
+    main_menu = ["Run", "Setup", "Save", "Reset", "Exit"]
+    current_selection = 0  # Run par défaut
+
+    countdown = 5  # secondes avant Run auto
+    stdscr.timeout(1000)  # 1000 ms = 1 seconde par tick
 
     while True:
         stdscr.clear()
-        banner_height=len(BANNER)
-        for i,line in enumerate(BANNER):
-            stdscr.addstr(i,0,line,curses.color_pair(3))
-        stdscr.addstr(banner_height,0,"↑/↓ browse, Enter/Space select, Esc exit",curses.color_pair(1))
+        banner_height = len(BANNER)
+        for i, line in enumerate(BANNER):
+            stdscr.addstr(i, 0, line, curses.color_pair(3))
+        stdscr.addstr(banner_height, 0, "↑/↓ browse, Enter/Space select, Esc exit", curses.color_pair(1))
 
-        for i,item in enumerate(main_menu):
-            style=curses.A_REVERSE if i==current_selection else 0
-            stdscr.addstr(banner_height+1+i,0,"> "+item if i==current_selection else "  "+item,curses.color_pair(1)|style if i==current_selection else curses.color_pair(2))
+        # Affiche le menu
+        for i, item in enumerate(main_menu):
+            style = curses.A_REVERSE if i == current_selection else 0
+            stdscr.addstr(banner_height + 1 + i, 0,
+                          "> " + item if i == current_selection else "  " + item,
+                          curses.color_pair(1) | style if i == current_selection else curses.color_pair(2))
 
-        tooltip={"Run":"Run Insert-Coin",
-        "Setup":"Edit Setup",
-        "Save":"Save current Setup",
-        "Reset":"Reset Setup to default",
-        "Exit":"Quit program"}.get(main_menu[current_selection],"")
-        draw_tooltip(stdscr,tooltip)
+        # Affiche le countdown en bas
+        h, w = stdscr.getmaxyx()
+        stdscr.addstr(h - 1, 0, f"AutoRun in {countdown} sec : Any arrow key to abort", curses.color_pair(1))
         stdscr.refresh()
-        key=stdscr.getch()
 
-        if key==27: break
-        elif key==curses.KEY_UP: current_selection=(current_selection-1)%len(main_menu)
-        elif key==curses.KEY_DOWN: current_selection=(current_selection+1)%len(main_menu)
-        elif key in [10,13,32]:
-            sel=main_menu[current_selection]
-            if sel=="Exit": break
-            elif sel=="Run":
-                curses.endwin()
-                subprocess.run(["bash","run.sh"])
-                stdscr=curses.initscr()
-                curses.curs_set(0)
-                stdscr.keypad(True)
-                curses.start_color()
-                curses.init_pair(1,curses.COLOR_CYAN,curses.COLOR_BLACK)
-                curses.init_pair(2,curses.COLOR_CYAN,curses.COLOR_BLACK)
-            elif sel=="Setup":
-                run_setup_menu(stdscr)
-            elif sel=="Save":
-                save_config()
-            elif sel=="Reset":
-                reset_config()
+        key = stdscr.getch()
 
+        # Si aucune touche → countdown
+        if key == -1:
+            countdown -= 1
+            if countdown <= 0:
+                # Timeout atteint → exécution Run
+                do_run()
+                return
+                
+            continue  # prochaine seconde
+        else:
+            stdscr.timeout(-1)  # remettre mode bloquant après appui
+            # Navigation classique
+            if key == 27:  # ESC
+                break
+            elif key == curses.KEY_UP:
+                current_selection = (current_selection - 1) % len(main_menu)
+            elif key == curses.KEY_DOWN:
+                current_selection = (current_selection + 1) % len(main_menu)
+            elif key in [10, 13, 32]:  # Enter / Space
+                sel = main_menu[current_selection]
+                if sel == "Exit":
+                    break
+                elif sel == "Run":
+                    curses.endwin()
+                    do_run()
+                    return                    
+                elif sel == "Setup":
+                    run_setup_menu(stdscr)
+                elif sel == "Save":
+                    save_config()
+                elif sel == "Reset":
+                    reset_config()
+            # Reset countdown si utilisateur navigue
+            countdown = 5
 curses.wrapper(main)
