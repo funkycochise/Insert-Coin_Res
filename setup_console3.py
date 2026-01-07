@@ -21,7 +21,7 @@ BANNER = [
 INI_FILE = "setup.ini"
 NAMES_INI_FILE = "names.ini"
 IGNORE_SECTIONS = ["setup"]
-IGNORE_SECTIONS = ["setup"]
+
 
 # --- Valeurs par défaut ---
 DEFAULT_CONFIG = {
@@ -289,13 +289,17 @@ def run_setup_menu(stdscr):
             if mode=="section": current_section=(current_section+1)%len(main_menu)
             else: current_key=(current_key+1)%len(keys)
         elif key in [10,13,32]:
-            if mode=="section":
-                mode="key"; current_key=0
-            else:
-                if keys[current_key]=="Exit":
-                    mode="section"; current_key=0
+            if mode == "section":
+                if main_menu[current_section] == "Exit":
+                    return              # sortir du Setup
+                    mode = "key"
+                    current_key = 0
                 else:
-                    toggle_value(sec, keys[current_key])
+                    if keys[current_key] == "Exit":
+                        mode = "section"    # retour aux sections
+                        current_key = 0
+                    else:
+                        toggle_value(sec, keys[current_key])
 
 # --- Menu Principal ---
 def main(stdscr):
