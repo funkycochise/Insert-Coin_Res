@@ -247,62 +247,75 @@ def run_setup_menu(stdscr):
     current_section = 0
     current_key = 0
     mode = "section"
-    main_menu = sections + ["Exit"]  # <-- Exit ajouté ici
+    main_menu = sections + ["Exit"]  # Exit ajouté ici
 
     while True:
         stdscr.clear()
-        stdscr.addstr(0,0,"↑/↓ browse, Enter/Space toggle, Esc exit", curses.color_pair(1))
+        stdscr.addstr(0, 0, "↑/↓ browse, Enter/Space toggle, Esc exit", curses.color_pair(1))
 
         if mode == "section":
-            stdscr.addstr(2,0,"Select section:", curses.color_pair(1))
+            stdscr.addstr(2, 0, "Select section:", curses.color_pair(1))
             for i, sec in enumerate(main_menu):
-                style = curses.A_REVERSE if i==current_section else 0
-                stdscr.addstr(3+i, 0, "> "+sec if i==current_section else "  "+sec, curses.color_pair(1)|style if i==current_section else curses.color_pair(2))
+                style = curses.A_REVERSE if i == current_section else 0
+                stdscr.addstr(3 + i, 0,
+                              "> " + sec if i == current_section else "  " + sec,
+                              curses.color_pair(1) | style if i == current_section else curses.color_pair(2))
             tooltip = get_section_tooltip(main_menu[current_section])
-        else:
+
+        else:  # mode == "key"
             sec = main_menu[current_section]
             keys = list(config.get(sec, {}).keys()) + ["Exit"]
-            stdscr.addstr(2,0,f"Options in [{sec}]:", curses.color_pair(1))
-            for i,k in enumerate(keys):
-                if k=="Exit":
-                    line="Exit"
-                elif k=="dualsdram":
-                    val=config[sec][k]
-                    line=f"{k} = {val} ({DUALSDRAM_DESC.get(val,'')})"
+            stdscr.addstr(2, 0, f"Options in [{sec}]:", curses.color_pair(1))
+            for i, k in enumerate(keys):
+                if k == "Exit":
+                    line = "Exit"
+                elif k == "dualsdram":
+                    val = config[sec][k]
+                    line = f"{k} = {val} ({DUALSDRAM_DESC.get(val, '')})"
                 else:
-                    line=f"{k} = {config[sec][k]}"
-                style = curses.A_REVERSE if i==current_key else 0
-                stdscr.addstr(3+i,0,"> "+line if i==current_key else "  "+line, curses.color_pair(1)|style if i==current_key else curses.color_pair(2))
-            tooltip = "Back to menu" if keys[current_key]=="Exit" else get_key_tooltip(sec, keys[current_key])
+                    line = f"{k} = {config[sec][k]}"
+                style = curses.A_REVERSE if i == current_key else 0
+                stdscr.addstr(3 + i, 0,
+                              "> " + line if i == current_key else "  " + line,
+                              curses.color_pair(1) | style if i == current_key else curses.color_pair(2))
+            tooltip = get_key_tooltip(sec, keys[current_key]) if keys[current_key] != "Exit" else "Back to menu"
 
         draw_tooltip(stdscr, tooltip)
         stdscr.refresh()
         key = stdscr.getch()
 
-        if key==27:  # Esc
-            if mode=="key":
-                mode="section"; current_key=0
+        if key == 27:  # Esc
+            if mode == "key":
+                mode = "section"
+                current_key = 0
             else:
                 break
-        elif key==curses.KEY_UP:
-            if mode=="section": current_section=(current_section-1)%len(main_menu)
-            else: current_key=(current_key-1)%len(keys)
-        elif key==curses.KEY_DOWN:
-            if mode=="section": current_section=(current_section+1)%len(main_menu)
-            else: current_key=(current_key+1)%len(keys)
-        elif key in [10,13,32]:
+
+        elif key == curses.KEY_UP:
+            if mode == "section":
+                current_section = (current_section - 1) % len(main_menu)
+            else:
+                current_key = (current_key - 1) % len(keys)
+
+        elif key == curses.KEY_DOWN:
+            if mode == "section":
+                current_section = (current_section + 1) % len(main_menu)
+            else:
+                current_key = (current_key + 1) % len(keys)
+
+        elif key in [10, 13, 32]:  # Enter / Space
             if mode == "section":
                 if main_menu[current_section] == "Exit":
-                    return              # sortir du Setup
+                    return
+                else:
                     mode = "key"
                     current_key = 0
+            else:  # mode == "key"
+                if keys[current_key] == "Exit":
+                    mode = "section"
+                    current_key = 0
                 else:
-                    if keys[current_key] == "Exit":
-                        mode = "section"    # retour aux sections
-                        current_key = 0
-                    else:
-                        toggle_value(sec, keys[current_key])
-                        
+                    toggle_value(sec, keys[current_key])
 def do_run():
     curses.endwin()
     if RUN_CMD:
