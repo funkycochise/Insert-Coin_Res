@@ -1,0 +1,19 @@
+{
+  "collections": [
+    {
+      "name": "Capcom",
+      "file": "capcom.json",
+	  "enabled": true
+    },
+    {
+      "name": "Konami",
+      "file": "konami.json",
+	  "enabled": false
+    },
+    {
+      "name": "SNK",
+      "file": "snk.json",
+	  "enabled": false
+    }
+  ]
+}

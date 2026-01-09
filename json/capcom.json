@@ -1,0 +1,46 @@
+{
+  "collection": "Capcom",
+  "games": {
+    "1941": {
+      "mra": "1941 Counter Attack (World 900227).mra",
+      "alt": "_1941 Counter Attack",
+      "orientation": "V",
+      "type": "STG"
+    },
+    "Mercs": {
+      "mra": "Mercs (World 900302).mra",
+      "alt": "_Mercs",
+      "orientation": "V",
+      "type": "RNG"
+    },
+    "Varth": {
+      "mra": "Varth Operation Thunderstorm (World 920714).mra",
+      "alt": "_Varth Operation Thunderstorm",
+      "orientation": "V",
+      "type": "STG"
+    },
+    "Cworld2j": {
+      "mra": "Adventure Quiz Capcom World 2 (Japan 920611).mra",
+      "alt": "_Adventure Quiz Capcom World 2",
+      "orientation": "H"
+    },
+    "CaptComm": {
+      "mra": "Captain Commando (World 911202).mra",
+      "alt": "_Captain Commando",
+      "orientation": "H",
+      "type": "Beat"
+    },
+    "Cawing": {
+      "mra": "Carrier Air Wing (World 901012).mra",
+      "alt": "_Carrier Air Wing",
+      "orientation": "H",
+      "type": "STG"
+    },	
+    "Ghouls": {
+      "mra": "Ghouls'n Ghosts (World).mra",
+      "alt": "_Ghouls'n Ghosts",
+      "orientation": "H",
+      "type": "Action"
+    }
+  }
+}
