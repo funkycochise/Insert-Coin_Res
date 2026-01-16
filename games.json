@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Game 1",
+        "cmd": "echo Lancement Game 1",
+        "preview": "preview1.mp4",
+        "thumbnail": "images/game1.png"
+    },
+    {
+        "name": "Game 2",
+        "cmd": "echo Lancement Game 2",
+        "preview": "preview2.mp4",
+        "thumbnail": "images/game2.png"
+    },
+    {
+        "name": "Game 3",
+        "cmd": "echo Lancement Game 3",
+        "preview": "preview3.mp4",
+        "thumbnail": "images/game3.png"
+    }
+]

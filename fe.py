@@ -3,13 +3,15 @@ import tkinter as tk
 import subprocess
 import cv2
 from PIL import Image, ImageTk
+import json
 
-# ---------------- Liste des jeux en dur ----------------
-games = [
-    {"name": "Game 1", "cmd": "echo Lancement Game 1", "preview": "preview1.mp4"},
-    {"name": "Game 2", "cmd": "echo Lancement Game 2", "preview": "preview2.mp4"},
-    {"name": "Game 3", "cmd": "echo Lancement Game 3", "preview": "preview3.mp4"},
-]
+# ---------------- Lecture du JSON ----------------
+json_file = "games.json"
+if not os.path.exists(json_file):
+    raise FileNotFoundError(f"{json_file} introuvable. Crée le fichier avec la liste de tes jeux.")
+
+with open(json_file, "r", encoding="utf-8") as f:
+    games = json.load(f)
 
 # ---------------- Variables globales ----------------
 cap = None  # pour la vidéo
@@ -31,7 +33,7 @@ def play_preview():
     game = games[index[0]]
     preview_path = game.get("preview")
     if not preview_path or not os.path.exists(preview_path):
-        label_preview.config(image='', text="Pas de preview")
+        label_preview.config(image='', text="Pas de preview", fg='white')
         cap = None
         return
     if cap is not None:
@@ -98,14 +100,15 @@ frame_right = tk.Frame(root, bg='black')
 frame_right.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=20, pady=20)
 
 # Liste des jeux
-game_listbox = tk.Listbox(frame_left, width=40, font=("Arial", 24), bg='black', fg='white', selectbackground='blue', selectforeground='white')
+game_listbox = tk.Listbox(frame_left, width=40, font=("Arial", 24), bg='black', fg='white',
+                          selectbackground='blue', selectforeground='white')
 game_listbox.pack(fill=tk.Y, expand=True)
 
 # Label preview
 label_preview = tk.Label(frame_right, text="Sélectionnez un jeu", font=("Arial", 24), bg='black', fg='white')
 label_preview.pack(fill=tk.BOTH, expand=True)
 
-# Remplir la liste
+# Remplir la liste depuis JSON
 for game in games:
     game_listbox.insert(tk.END, game["name"])
 
