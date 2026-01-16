@@ -1,0 +1,319 @@
+
+Index :
+
+Res.zip
+		config
+		_Arcade
+			_alternatives
+				_Blade Master (Turbo)
+				_Bubble Bobble
+				_Chuka Taisen
+				_DoDonPachi
+				_Double Dragon 3 The Rosetta Stone
+				_Dream Soccer '94 (Turbo)
+				_Gun Force II (Turbo)
+				_Gunforce - Battle Fire Engulfed Terror Island (Turbo)
+				_Hook (Turbo)
+				_In The Hunt (Turbo)
+				_Lethal Thunder (Turbo)
+				_Major Title 2 (Turbo)
+				_Mystic Riders (Turbo)
+				_Ninja Baseball Bat Man (Turbo)
+				_R-Type Leo (Turbo)
+				_Street Fighter II' Champion Edition
+				_Superior Soldiers
+				_Superior Soldiers (Turbo)
+				_Teenage Mutant Ninja Turtles
+				_The Combatribes
+				_Undercover Cops (Turbo)
+				_Wonder Boy
+				_Wonder Boy in Monster Land
+				_WWF WrestleFest
+			cores
+				Battletoads_20230420.rbf
+				ctribe_mister.rbf
+				ddragon3_mister.rbf
+				SEGASYS2_20230418.rbf
+				StarForce_20250803.rbf
+				wwfwfest_mister.rbf
+				
+		3 Count Bout.mgl
+		2020 Super Baseball.mgl
+		Aero Fighters 2.mgl
+		Aero Fighters 3.mgl
+		Aggressors of Dark Kombat.mgl
+		Alpha Mission II.mgl
+		Andro Dunos.mgl
+		Art of Fighting 2.mgl
+		Art of Fighting 3.mgl
+		Art of Fighting.mgl
+		Bakatonosama Mahjong Manyuuki.mgl
+		Baluba-louk no Densetsu (Japan).mra
+		Bang Bang Busters (2010 NCI release).mgl
+		Bang Bang Busters 2 (demo 2).mgl
+		Bang Bang Busters 2 (demo).mgl
+		Bang Bead.mgl
+		Baseball Stars 2.mgl
+		Baseball Stars Professional.mgl
+		Battle Flip Shot.mgl
+		Battletoads.mgl
+		Blazing Star.mgl
+		Blue's Journey.mgl
+		Body Slam (World, S16) [8751 317-0015].mra
+		Brain.mra
+		Breakers Revenge.mgl
+		Breakers.mgl
+		Burning Fight.mgl
+		Cabal.mgl
+		Captain Tomaday.mgl
+		Chibi Maruko-chan; Maruko Deluxe Quiz.mgl
+		Choplifter (unprotected).mra
+		Choutetsu Brikin'ger.mgl
+		Chuka Taisen (World) (P0-028-A PCB).mra
+		Crazy Otto.mra
+		Critter Crusher (EA 951204 V1.000).mra
+		Crossed Swords 2.mgl
+		Crossed Swords.mgl
+		Curve Ball.mra
+		Cyber-Lip.mgl
+		DaeJeon! SanJeon SuJeon (AJTUE 990412 V1.000).mra
+		Dakkochan House (MC-8123).mra
+		Dangun Feveron.mra
+		Digger Man (prototype).mgl
+		Double Dragon (Neo-Geo).mgl
+		Double Dragon 3 The Rosetta Stone (US).mra
+		Double Dragon neo.mra
+		Dragon's Heaven (development board).mgl
+		Dynamite Deka (J 960515 V1.000).mra
+		Eight Man.mgl
+		Excite League (FD1094 317-0079).mra
+		Far East of Eden - Kabuki Klash.mgl
+		Fatal Fury - King of Fighters.mgl
+		Fatal Fury 2.mgl
+		Fatal Fury 3 - Road to the Final Victory.mgl
+		Fatal Fury Special.mgl
+		Fight Fever.mgl
+		Final Arch (J 950714 V1.001).mra
+		Final Fight AE CPS2 Patch.mra
+		Football Frenzy.mgl
+		Frog Feast.mra
+		Galaxy Fight - Universal Warriors.mgl
+		Ganbare! Marine Kun -Japan 2K0411-.mra
+		Ganryu.mgl
+		Gardia (317-0006).mra
+		Garou - Mark of the Wolves.mgl
+		Ghost Pilots.mgl
+		Ghostlop.mgl
+		Ghosts'n Goblins (World set 1).mra
+		Goal! Goal! Goal!.mgl
+		Green Beret.mra
+		Gururin.mgl
+		Hasamu (Japan).mra
+		Heavy Metal (315-5135).mra
+		Hotdog Storm.mra
+		Hypernoid.mra
+		Idol Mahjong Final Romance 2.mgl
+		Indiana Jones (set 4).mra
+		Insector.mra
+		Ironclad.mgl
+		Janshin Densetsu - Quest of Jongmaster.mgl
+		Jockey Grand Prix.mgl
+		Karnov's Revenge.mgl
+		Kick-Man.mra
+		King of the Monsters 2 - The Next Thing.mgl
+		King of the Monsters.mgl
+		Kizuna Encounter - Super Tag Battle.mgl
+		Krull.mra
+		Last Blade, The.mra
+		Last Hope.mgl
+		Last Resort.mgl
+		League Bowling.mgl
+		Legend of Success Joe.mgl
+		Legion - Spinner-87 (World ver 2.03).mra
+		Lifeforce (US).mra
+		Magical Drop II.mgl
+		Magical Drop III.mgl
+		Magical Zunou Power (J 961031 V1.000).mra
+		Magician Lord.mgl
+		Mahjong Kyo Retsuden.mgl
+		Major League (World, S16A) [No Protection].mra
+		Major Title 2 (World, set 1).mra
+		Marble Madness (set 4).mra
+		Matrimelee.mgl
+		Metal Slug - Super Vehicle-001.mgl
+		Metal Slug 2 - Super Vehicle-001-II.mgl
+		Metal Slug 2 Turbo.mgl
+		Metal Slug 3.mgl
+		Metal Slug 4.mgl
+		Metal Slug 5.mgl
+		Metal Slug X - Super Vehicle-001.mgl
+		Microman Battle Charge (J 990326 V1.000).mra
+		Minasan no Okagesamadesu! Dai Sugoroku Taikai.mgl
+		Money Puzzle Exchanger - Money Idol Exchanger.mgl
+		Mutation Nation.mgl
+		NAM-1975.mgl
+		Name Club Disney (J 980614 V1.000).mra
+		Name Club Ver.3 (J 970723 V1.000).mra
+		Neo Bomberman.mgl
+		Neo Drift Out - New Technology.mgl
+		Neo Mr. Do!.mgl
+		Neo Turf Masters.mgl
+		Neo-Geo Cup '98 - The Road to the Victory.mgl
+		Nightmare in the Dark.mgl
+		Ninja Combat.mgl
+		Ninja Commando.mgl
+		Ninja Master's - Haoh-ninpo-cho.mgl
+		Noboranka (bootleg).mra
+		Over Top.mgl
+		OverTop.mra
+		Pae Wang Jeon Seol.mgl
+		Panic Bomber.mgl
+		Pleasure Goal.mgl
+		Pochi and Nyaa.mgl
+		Pollen Angel.mra
+		Pop 'n Bounce.mgl
+		Power Spikes II.mgl
+		Prehistoric Isle 2.mgl
+		Print Club 2 (U 970921 V1.000).mra
+		Print Club 2 Vol. 3 (U 990310 V1.000).mra
+		Print Club Pokemon B (U 991126 V1.000).mra
+		Puck Man (JP, Set 1).mra
+		Pulstar.mgl
+		Puzzle & Action- BoMulEul Chajara (JUET 970125 V2.00K).mra
+		Puzzle & Action- Treasure Hunt (JUET 970901 V2.00E).mra
+		Puzzle Bobble - Bust-A-Move.mgl
+		Puzzle Bobble 2 - Bust-A-Move Again.mgl
+		Puzzle De Pon! R!.mgl
+		Puzzle De Pon!.mgl
+		Puzzled - Joy Joy Kid.mgl
+		Quartet 2 (World, S16A) [No Protection].mra
+		Quiz Daisousa Sen - The Last Count Down.mgl
+		Quiz King of Fighters.mgl
+		Quiz Meitantei Neo & Geo - Quiz Daisousa Sen part 2.mgl
+		Rage of the Dragons.mgl
+		Ragnagard.mgl
+		Real Bout Fatal Fury 2 - The Newcomers.mgl
+		Real Bout Fatal Fury Special.mgl
+		Real Bout Fatal Fury.mgl
+		Riding Hero.mgl
+		Robo Army.mgl
+		RyuKyu (Rev A, Japan) (FD1094 317-5023A).mra
+		Salamander (version D).mra
+		Samurai Shodown II.mgl
+		Samurai Shodown III.mgl
+		Samurai Shodown IV - Amakusa's Revenge.mgl
+		Samurai Shodown V Perfect.mgl
+		Samurai Shodown V Special.mgl
+		Samurai Shodown V.mgl
+		Samurai Shodown.mgl
+		Savage Reign.mgl
+		SDI Strategic Defense Initiative (Japan, New Ver., S16A) [FD1089B 317-0027].mra
+		Sengoku 2.mgl
+		Sengoku 3.mgl
+		Sengoku.mgl
+		Shock Troopers - 2nd Squad.mgl
+		Shock Troopers.mgl
+		Shougi no Tatsujin - Master of Shougi.mgl
+		SNK vs. Capcom - SVC Chaos.mgl
+		Soccer Brawl.mgl
+		Spin Master - Miracle Adventure.mgl
+		Stakes Winner 2.mgl
+		Stakes Winner.mgl
+		Star Jacker (alt).mra
+		StarForce.mra
+		Street Fighter Alpha 3 Challenger's Edition (USA 980904).mra
+		Street Fighter Zero 3 Challenger's Edition (USA 980904).mra
+		Street Hoop.mgl
+		Stress Busters (J 981020 V1.000).mra
+		Strikers 1945 Plus.mgl
+		Super Bubble Pop.mgl
+		Super Dodge Ball.mgl
+		Super Sidekicks 2 - The World Championship.mgl
+		Super Sidekicks 3 - The Next Glory.mgl
+		Super Sidekicks.mgl
+		Superior Soldiers (US).mra
+		Swat (315-5048).mra
+		SWAT (World, 315-5048).mra
+		Technical Bowling (J 971212 V1.000).mra
+		Tecmo World Soccer '96.mgl
+		The Combatribes (US, Rev 2, Set 1).mra
+		The Eye of Typhoon - Tsunami Edition.mgl
+		The Irritating Maze.mgl
+		The King of Fighters '94.mgl
+		The King of Fighters '95.mgl
+		The King of Fighters '96.mgl
+		The King of Fighters '97.mgl
+		The King of Fighters '98 - The Slugfest.mgl
+		The King of Fighters '99 - Millennium Battle.mgl
+		The King of Fighters 2000.mgl
+		The King of Fighters 2001.mgl
+		The King of Fighters 2002.mgl
+		The King of Fighters 2003.mgl
+		The Last Blade 2.mgl
+		The Last Blade.mgl
+		The Super Spy.mgl
+		The Ultimate 11 - The SNK Football Championship.mgl
+		Thrash Rally.mgl
+		Timber.mra
+		Toki no Senshi - Chrono Soldier [MC-8123, 317-0040].mra
+		Toki no Senshi - Chrono Soldier.mra
+		Top Hunter - Roddy & Cathy.mgl
+		Top Player's Golf.mgl
+		Treasure of the Caribbean.mgl
+		Twinkle Star Sprites.mgl
+		Tylz.mra
+		UFO Senshi Youko Chan [MC-8123, 317-0064].mra
+		Viewpoint.mgl
+		Virtual Mahjong (J 961214 V1.000).mra
+		Voltage Fighter - Gowcaizer.mgl
+		Waku Waku 7.mgl
+		Waku Waku Ultraman Racing.mra
+		Windjammers.mgl
+		Wonder Boy (System 2, Set 1, Japan) [315-5177].mra
+		Wonder Boy in Monster Land (Japan New Ver., MC-8123, 317-0043).mra
+		Wonder Boy in Monster Land.mra
+		World Heroes 2 Jet.mgl
+		World Heroes 2.mgl
+		World Heroes Perfect.mgl
+		World Heroes.mgl
+		WWF WrestleFest (World).mra
+		Xeno Crisis.mgl
+		Zed Blade - Operation Ragnarok.mgl
+		Zintrick.mgl
+		Zupapa!.mgl
+		
+Res2.zip
+	games
+		battletoads
+		cd-i
+		Tamagotchi
+	_Arcade
+		cores
+			agallet_mister_20250805.rbf
+			mazinger_mister_20250804.rbf
+			sailormn_mister_20250805.rbf
+			tmnt2_mister_20251012.rbf
+		_alternatives
+			_Air Gallet
+			_Mazinger Z
+			_Pretty Soldier Sailor Moon
+			_Teenage Mutant Ninja Turtles - Turtles In Time
+		Akuu Gallet (Japan).mra
+		Bishoujo Senshi Sailor Moon (Version 95-03-22B, Japan).mra
+		Mazinger Z (Japan).mra
+		Teenage Mutant Ninja Turtles - Turtles in Time (4 Players Ver. UAA).mra
+	
+Res3.zip
+	_Arcade
+		cores
+			twincobr_mister_20251209.rbf
+		_alternatives
+			_Twin Cobra
+		Kyukyoku Tiger (Japan, 2P Co-Op).mra
+		
+Res4.zip
+	config	
+	_Arcade
+		cores
+			VSnes_20251222.rbf
+		all Vs mras
