@@ -5,4 +5,4 @@
 
 # Insert-Coin ressource repository used by InsertCoin script (for Mister FPGA)
 
-for more details: https://github.com/funkycochise/Insert-Coin/wiki
+for more details: https://github.com/funkycochise/Insert-Coin/blob/main/README.md
