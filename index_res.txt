@@ -169,6 +169,7 @@ Res.zip
 		Pae Wang Jeon Seol.mgl
 		Panic Bomber.mgl
 		Pleasure Goal.mgl
+		Plump Pop.mra
 		Pochi and Nyaa.mgl
 		Pollen Angel.mra
 		Pop 'n Bounce.mgl
@@ -316,4 +317,5 @@ Res4.zip
 	_Arcade
 		cores
 			VSnes_20251222.rbf
+
 		all Vs mras
