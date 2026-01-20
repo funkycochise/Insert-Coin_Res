@@ -3,6 +3,19 @@ Index :
 
 Res.zip
 		config
+				_Blade Master (Turbo).cfg
+				_Dream Soccer '94 (Turbo).cfg
+				_Gun Force II (Turbo).cfg
+				_Gunforce - Battle Fire Engulfed Terror Island (Turbo).cfg
+				_Hook (Turbo).cfg
+				_In The Hunt (Turbo).cfg
+				_Lethal Thunder (Turbo).cfg
+				_Major Title 2 (Turbo).cfg
+				_Mystic Riders (Turbo).cfg
+				_Ninja Baseball Bat Man (Turbo).cfg
+				_R-Type Leo (Turbo).cfg
+				_Superior Soldiers (Turbo).cfg
+				_Undercover Cops (Turbo).cfg		
 		_Arcade
 			_alternatives
 				_Blade Master (Turbo)
