@@ -3,19 +3,19 @@ Index :
 
 Res.zip
 		config
-				_Blade Master (Turbo).cfg
-				_Dream Soccer '94 (Turbo).cfg
-				_Gun Force II (Turbo).cfg
-				_Gunforce - Battle Fire Engulfed Terror Island (Turbo).cfg
-				_Hook (Turbo).cfg
-				_In The Hunt (Turbo).cfg
-				_Lethal Thunder (Turbo).cfg
-				_Major Title 2 (Turbo).cfg
-				_Mystic Riders (Turbo).cfg
-				_Ninja Baseball Bat Man (Turbo).cfg
-				_R-Type Leo (Turbo).cfg
-				_Superior Soldiers (Turbo).cfg
-				_Undercover Cops (Turbo).cfg		
+				Blade Master (Turbo).cfg
+				Dream Soccer '94 (Turbo).cfg
+				Gun Force II (Turbo).cfg
+				Gunforce - Battle Fire Engulfed Terror Island (Turbo).cfg
+				Hook (Turbo).cfg
+				In The Hunt (Turbo).cfg
+				Lethal Thunder (Turbo).cfg
+				Major Title 2 (Turbo).cfg
+				Mystic Riders (Turbo).cfg
+				Ninja Baseball Bat Man (Turbo).cfg
+				R-Type Leo (Turbo).cfg
+				Superior Soldiers (Turbo).cfg
+				Undercover Cops (Turbo).cfg		
 		_Arcade
 			_alternatives
 				_Blade Master (Turbo)
@@ -326,7 +326,10 @@ Res3.zip
 		Kyukyoku Tiger (Japan, 2P Co-Op).mra
 		
 Res4.zip
-	config	
+	config
+		duckhunt.CFG
+		hogalley.CFG
+		
 	_Arcade
 		cores
 			VSnes_20251222.rbf

@@ -15,7 +15,7 @@ def ensure_res_index():
     )
     return os.path.exists(RES_INDEX_FILE)
 
-# --- Viewer minimal avec scroll + PageUp/PageDown ---
+# --- Viewer minimal avec scroll + PageUp/PageDown + Home/End ---
 def view_file(stdscr, filename, page_size=10):
     if not os.path.exists(filename):
         stdscr.addstr(0, 0, f"File not found: {filename}")
@@ -39,7 +39,7 @@ def view_file(stdscr, filename, page_size=10):
             y += 1
 
         # Footer
-        stdscr.addstr(h-1, 0, f"↑↓ scroll  PgUp/PgDn {page_size} lines  ESC back")
+        stdscr.addstr(h-1, 0, f"↑↓ scroll  PgUp/PgDn {page_size} lines  Home/End start/end  ESC back")
         stdscr.refresh()
 
         k = stdscr.getch()
@@ -53,6 +53,10 @@ def view_file(stdscr, filename, page_size=10):
             pos = min(len(lines) - 1, pos + page_size)
         elif k == curses.KEY_PPAGE:  # Page Up
             pos = max(0, pos - page_size)
+        elif k == curses.KEY_HOME:  # Home
+            pos = 0
+        elif k == curses.KEY_END:   # End
+            pos = max(0, len(lines) - 1)
 
 # --- Main test ---
 if ensure_res_index():
