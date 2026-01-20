@@ -176,6 +176,13 @@ def save_config():
 def reset_config():
     global config
     config = {sec: dict(opts) for sec, opts in DEFAULT_CONFIG.items()}
+    
+MAIN_TOOLTIPS = {
+    "Run": "Run Insert-Coin",
+    "Setup": "Change parameters",
+    "About": "Insert-Coin for mister FPGA\n",
+    "Exit": "Exit application"
+}
 
 SECTION_TOOLTIPS = {
     "update": "Settings for Update",
@@ -295,7 +302,7 @@ def main(stdscr):
     curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_RED, curses.COLOR_BLACK)
 
-    main_menu = ["Run", "Setup", "Exit"]
+    main_menu = ["Run", "Setup", "About", "Exit"]
     RUN_INDEX = main_menu.index("Run")
     current = 0
     last = 0
@@ -321,7 +328,7 @@ def main(stdscr):
         if current == RUN_INDEX and autorun:
             stdscr.addstr(h-1, 0, f"AutoRun in {countdown} sec", curses.color_pair(1))
 
-        draw_tooltip(stdscr, "")
+        draw_tooltip(stdscr, MAIN_TOOLTIPS.get(main_menu[current], ""))
 
         stdscr.refresh()
         k = stdscr.getch()
