@@ -1,0 +1,32 @@
+NF /media/fat/_Arcade/Avengers (US, revision C).mra - /media/fat/_#Insert-Coin/_Capcom-Mitchell
+NF /media/fat/_Arcade/Legendary Wings (US set 1).mra - /media/fat/_#Insert-Coin/_Capcom-Mitchell
+NF /media/fat/_Arcade/Section Z (set 1).mra - /media/fat/_#Insert-Coin/_Capcom-Mitchell
+NF /media/fat/_Arcade/Side Arms - Hyper Dyne (World, 861129).mra - /media/fat/_#Insert-Coin/_Capcom-Mitchell
+NF /media/fat/_Arcade/Pang! 3 (Euro 950601).mra - /media/fat/_#Insert-Coin/_CPS1
+NF /media/fat/_Arcade/Chelnov - Atomic Runner (World).mra - /media/fat/_#Insert-Coin/_DataEast-Deco
+NF /media/fat/_Arcade/Teenage Mutant Ninja Turtles - Turtles in Time (4 Players ver UAA).mra - /media/fat/_#Insert-Coin/_Konami
+NF /media/fat/_Arcade/Yie Ar Kung-Fu (program code I).mra - /media/fat/_#Insert-Coin/_Konami
+NF /media/fat/_Arcade/E-Swat - Cyber Police (set 4, World) (FD1094 317-0130).mra - /media/fat/_#Insert-Coin/_Sega-System-16
+NF /media/fat/_Arcade/Bronx.mra - /media/fat/_#Insert-Coin/_Taito
+NF /media/fat/_Arcade/Onna Sanshirou - Typhoon Gal.mra - /media/fat/_#Insert-Coin/_Taito
+NF /media/fat/_Arcade/Rumba Lumber.mra - /media/fat/_#Insert-Coin/_Taito
+NF /media/fat/_Arcade/N.Y. Captor.mra - /media/fat/_#Insert-Coin/_Taito
+NF /media/fat/_Arcade/Double Dragon (Japan).mra - /media/fat/_#Insert-Coin/_Technos
+NF /media/fat/_Arcade/Wild Fang - Tecmo Knight.mra - /media/fat/_#Insert-Coin/_Tehkan-Tecmo
+NF /media/fat/_Arcade/Legendary Wings (US set 1).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/19XX The War Against Destiny (Euro 960104).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Dimahoo (Euro 000121).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Pang! 3 (Euro 950601).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Side Arms - Hyper Dyne (World, 861129).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Teenage Mutant Ninja Turtles - Turtles in Time (4 Players ver UAA).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Yie Ar Kung-Fu (program code I).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/1944 The Loop Master (Euro 000620).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Alien vs. Predator (Euro 940520).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Chelnov - Atomic Runner (World).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Double Dragon (Japan).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/E-Swat - Cyber Police (set 4, World) (FD1094 317-0130).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Mighty! Pang (Euro 001010).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Puzz Loop 2 (Euro 010302).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Street Fighter Alpha 2 (Euro 960229).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Street Fighter Alpha 3 (Euro 980904).mra - /media/fat/_#Insert-Coin/_#Essentials
+NF /media/fat/_Arcade/Super Puzzle Fighter II Turbo (Euro 960529).mra - /media/fat/_#Insert-Coin/_#Essentials
