@@ -432,6 +432,7 @@ https://lmgtfy.com/?q=darksoft+neo+geo+roll-up+pack
 	<romset name="samsh5fe" altname="Samurai Shodown V Special Final Edition" altnamej="Samurai Shodown Zero Special Final Edition" publisher="Yuki Enterprise / SNK Playmore" year="2004" ram="2"/>
 	<romset name="samsh5pf" altname="Samurai Shodown V Perfect" altnamej="Samurai Spirits Zero Perfect" publisher="SNK" year="2020" ram="2"/>
 
+
 	<!-- ROMs requiring 128MB SDRAM (2x64MB) -->
 
 	<!-- Not in darksoft pack -->
@@ -520,5 +521,8 @@ https://lmgtfy.com/?q=darksoft+neo+geo+roll-up+pack
 	</romset>
 
 	<romset name="turfmastscot" altname="Neo Turf Masters (Hack Scotland Course from CD)" altnamej="Big Tournament Golf (Hack Scotland Course from CD)" publisher="Nazca - dericmiller" year="2026"/>
+	<romset name="TTE_shinobi" altname="TTE Shinobi" altnamej="TTE Shinobi" publisher="TTE" year="2025"/>
+	<romset name="TTE_goldenaxe" altname="TTE Golden Axe" altnamej="TTE Golden Axe" publisher="TTE" year="2025"/>
+
 
 </romsets>
