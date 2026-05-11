@@ -335,3 +335,43 @@ Res4.zip
 			VSnes_20251222.rbf
 
 		all Vs mras
+
+Res5.zip
+	_Arcade
+		cores
+			ChinaGate.rbf
+			Darius2.rbf
+			Darius.rbf
+			jtargus.rbf
+			jtgrad3.rbf
+			Kangaroo.rbf
+			maniach.rbf
+			matmania.rbf
+			oscar_mister.rbf
+			SegaG80.rbf
+		_alternatives
+			_China Gate
+			_Darius
+			_Kangaroo
+			_Mania Challenge
+			_Mat Mania
+			_Psycho-Nics Oscar
+			_The Ninja Warriors
+			_Tumble Pop
+		005.mra
+		Argus.mra
+		Astro Blaster.mra
+		China Gate (US).mra
+		Darius (World).mra
+		Darius II (Japan, rev 1).mra
+		Gradius III (World, version R).mra
+		jetpac_sj.mra
+		Kangaroo.mra
+		Mania Challenge (Set 1).mra
+		Mat Mania.mra
+		Monster Bash.mra
+		Pig Newton.mra
+		Psycho-Nics Oscar (World).mra
+		Sindbad Mystery.mra
+		Space Odyssey.mra
+		The Ninja Warriors (World).mra
