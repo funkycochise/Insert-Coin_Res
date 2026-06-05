@@ -343,12 +343,16 @@ Res5.zip
 			Darius2.rbf
 			Darius.rbf
 			jtargus.rbf
-			jtgrad3.rbf
 			Kangaroo.rbf
+            macross_mister.rbf
 			maniach.rbf
 			matmania.rbf
+            Millipede.rbf
 			oscar_mister.rbf
 			SegaG80.rbf
+            SpaceFirebird
+            StarWars
+            Tempest
 		_alternatives
 			_China Gate
 			_Darius
@@ -356,6 +360,8 @@ Res5.zip
 			_Mania Challenge
 			_Mat Mania
 			_Psycho-Nics Oscar
+            _Space Firebird
+            _Super Dimension Fortress Macross
 			_The Ninja Warriors
 			_Tumble Pop
 		005.mra
@@ -364,14 +370,19 @@ Res5.zip
 		China Gate (US).mra
 		Darius (World).mra
 		Darius II (Japan, rev 1).mra
-		Gradius III (World, version R).mra
-		jetpac_sj.mra
-		Kangaroo.mra
-		Mania Challenge (Set 1).mra
-		Mat Mania.mra
+        Empire Strikes Back.mra
+        jetpac_sj.mra
+        Kangaroo.mra
+        Mania Challenge (Set 1).mra
+        Mat Mania.mra
+        Millipede.mra
 		Monster Bash.mra
 		Pig Newton.mra
 		Psycho-Nics Oscar (World).mra
 		Sindbad Mystery.mra
+        Space Firebird.mra
 		Space Odyssey.mra
+        Star Wars (Rev 2).mra
+        Super Dimension Fortress Macross (Japan).mra
+        Tempest.mra
 		The Ninja Warriors (World).mra
