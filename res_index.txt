@@ -386,6 +386,7 @@ Res5.zip
         Super Dimension Fortress Macross (Japan).mra
         Tempest.mra
 		The Ninja Warriors (World).mra
+
 Res6.zip
 	_Arcade
            Boogie Wings (World).mra
