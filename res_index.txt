@@ -386,3 +386,64 @@ Res5.zip
         Super Dimension Fortress Macross (Japan).mra
         Tempest.mra
 		The Ninja Warriors (World).mra
+Res6.zip
+	_Arcade
+           Boogie Wings (World).mra
+           Daraku Tenshi The Fallen Angels.mra
+           DoDonPachi Dai-Ou-Jou Black Label (Japan, 2002.10.07 Black Ver., bootleg Knights of Valour Super Heroes conversion).mra
+           Dragon Blaze (old eeprom).mra
+           Dragon Blaze.mra
+           Dragon World 3 (ver. 106).mra
+           Dragon World 2001 (ver. 100, Japan).mra
+           Espgaluda (2003.10.15 Master Ver, bootleg cartridge conversion).mra
+           Gunbarich.mra
+           Gunbird 2 (set 1).mra
+           Gunbird 2 (set 2).mra
+           Ketsui Kizuna Jigoku Tachi (2003.01.01. Master Ver., bootleg cartridge conversion).mra
+           Knights of Valour 2 (ver. 107).mra
+           Knights of Valour Super Heroes (ver. 100, CN).mra
+           Mahjong G-Taste.mra
+           Martial Masters (ver. 104, 102, 102US).mra
+           Oriental Legend (ver. 126).mra
+           Photo Y2K (ver. 102, Japanese Board).mra
+           S.V.G. - Spectral vs Generation (ver. 200).mra
+           Sol Divide Sword Of Darkness (Korea).mra
+           Sol Divide Sword Of Darkness.mra
+           Space Bomber (ver. B).mra
+           Space Bomber.mra
+           Strikers 1945 II.mra
+           Strikers 1945 III.mra
+           Tetris The Absolute - The Grand Master 2 Plus.mra
+           Tetris The Absolute - The Grand Master 2.mra
+           The Gladiator (ver. 101).mra
+           The Killing Blade (ver. 109, Chinese Board).mra
+           World Rally Championship (set 2).mra
+           Xiyou Shi E Zhuan Super (ver. 103, China, Tencent) (unprotected).mra
+		cores
+                   BoogieWings_20260615.rbf
+                   PsikyoSH2_20260619.rbf
+                   WorldRally_20260619.rbf
+		_alternatives
+                   _Ketsui Kizuna Jigoku Tachi
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 2).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 3).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 4).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 5).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 6).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 7).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 8).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Custom Difficulty 9).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - mode 02 to determine).mra
+                      Ketsui - Kizuna Jigoku Tachi (PS4 - Ketsui Deathtiny - Super Easy).mra
+                   _Knights of Valour Super Heroes
+                      Knights of Valour Super Heroes (ver. 101, CN).mra
+                      Knights of Valour Super Heroes (ver. 102, CN).mra
+                      Knights of Valour Super Heroes (ver. 103, CN).mra
+                      Knights of Valour Super Heroes (ver. 104, CN).mra
+                   _Photo Y2K
+                      Photo Y2K (ver. 103, Japanese Board).mra
+                      Photo Y2K (ver. 104).mra
+                      Photo Y2K (ver. 105).mra
+                   _The Gladiator
+                      The Gladiator (ver. 104).mra
+                      The Gladiator (ver. 107).mra
