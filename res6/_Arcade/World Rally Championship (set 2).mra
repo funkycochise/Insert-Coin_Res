@@ -1,0 +1,55 @@
+<misterromdescription>
+    <name>World Rally Championship (version 1.0, checksum 3873, 06 Apr 1993)</name>
+    <setname>wrallyc</setname>
+    <rbf>WorldRally</rbf>
+    <mameversion>0277</mameversion>
+    <year>1993</year>
+    <manufacturer>Gaelco</manufacturer>
+    <players>2</players>
+    <joystick>8</joystick>
+    <rotation>horizontal</rotation>
+    <region>World</region>
+    <category>Racing</category>
+
+    <switches base="0x700000" default="df,ff">
+        <!-- low byte = SW2 -->
+        <dip name="Difficulty" bits="0,1" ids="Hardest,Hard,Easy,Normal"/>
+        <dip name="Number of Joysticks" bits="2" ids="1,2"/>
+        <dip name="Control Configuration" bits="3,4" ids="Optical Wheel,Invalid,Pot Wheel,Joystick"/>
+        <dip name="Demo Sounds" bits="5" ids="On,Off"/>
+        <dip name="Cabinet" bits="6" ids="Cocktail,Upright"/>
+        <dip name="Service Mode" bits="7" ids="On,Off"/>
+        <!-- high byte = SW1 -->
+        <dip name="Coin A" bits="8,10" ids="3C/4C,2C/3C,1C/6C,1C/5C,1C/4C,1C/3C,1C/2C,1C/1C"/>
+        <dip name="Coin B" bits="11,13" ids="4C/3C,3C/2C,6C/1C,5C/1C,4C/1C,3C/1C,2C/1C,1C/1C"/>
+        <dip name="Credit Configuration" bits="14" ids="Start 2C,Start 1C"/>
+        <dip name="Free Play" bits="15" ids="On,Off"/>
+    </switches>
+
+    <buttons names="Accelerate,Gear Shift,Start,Coin,Core credits" default="A,B,Start,R,L"/>
+
+    <rom index="0" zip="wrallyc.zip|wrallya.zip|wrally.zip" md5="None">
+        <!-- 0x000000: 68000 program, c23 = even (high) byte, c22 = odd (low) byte -->
+        <interleave output="16">
+            <part name="c23.bin" crc="8b7d93c3" map="01"/>
+            <part name="c22.bin" crc="56da43b6" map="10"/>
+        </interleave>
+        <!-- 0x100000: GFX, 16-bit interleaved pairs -->
+        <interleave output="16">
+            <part name="worldr21.i13" crc="b7fddb12" map="01"/>
+            <part name="worldr20.i11" crc="58b2809a" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="worldr19.i09" crc="018b35bb" map="01"/>
+            <part name="worldr18.i07" crc="b37c807e" map="10"/>
+        </interleave>
+        <!-- 0x300000: OKI MSM6295 samples -->
+        <part name="worldr14.c01" crc="e931c2ee"/>
+        <part name="worldr15.c03" crc="11f0fe2c"/>
+        <!-- 0x400000: DS5002FP program SRAM (plaintext dump) -->
+        <part name="wrdallas.bin" crc="547d1768"/>
+    </rom>
+
+    <!-- NVRAM: DS5002FP SRAM is battery backed on the real PCB -->
+    <nvram index="2" size="32768"/>
+</misterromdescription>
