@@ -522,7 +522,16 @@ https://lmgtfy.com/?q=darksoft+neo+geo+roll-up+pack
 
 	<romset name="turfmastscot" altname="Neo Turf Masters (Hack Scotland Course from CD)" altnamej="Big Tournament Golf (Hack Scotland Course from CD)" publisher="Nazca - dericmiller" year="2026"/>
 	<romset name="TTE_shinobi" altname="TTE Shinobi" altnamej="TTE Shinobi" publisher="TTE" year="2025"/>
-	<romset name="TTE_goldenaxe" altname="TTE Golden Axe" altnamej="TTE Golden Axe" publisher="TTE" year="2025"/>
+
+	<romset name="nk_ghouls" altname="nk_ghouls" altnamej="nk_ghouls" publisher="NK" year="2026">
+		<file name="nk_ghouls.p1" index="4"/>
+		<file name="nk_ghouls.s1" index="8"/>
+		<file name="nk_ghouls.m1" index="9"/>
+		<file name="nk_ghouls.v1" index="16"/>
+		<file name="nk_ghouls.c1" index="64"/>
+		<file name="nk_ghouls.c2" index="65"/>
+	</romset>
+
 
 
 </romsets>
